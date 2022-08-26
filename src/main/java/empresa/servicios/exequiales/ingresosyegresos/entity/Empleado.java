@@ -5,17 +5,22 @@ public class Empleado {
     private long idEmpleado; // variable de tipo objeto
     private String documento;
     private String nombreEmpleado;
+    private String correo;
     private String direccion;
     private String telefono;
+    private String empresa;
+    private Rol rol;
     private boolean estado;
 
-    public Empleado(long idEmpleado, String documento, String nombreEmpleado, String direccion, String telefono, boolean estado) {
-
+    public Empleado(long idEmpleado, String documento, String nombreEmpleado, String correo, String direccion, String telefono, String empresa, Rol rol, boolean estado) {
         this.idEmpleado = idEmpleado;
         this.documento = documento;
         this.nombreEmpleado = nombreEmpleado;
+        this.correo = correo;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.empresa = empresa;
+        this.rol = rol;
         this.estado = estado;
     }
 
@@ -43,6 +48,14 @@ public class Empleado {
         this.nombreEmpleado = nombreEmpleado;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     public String getDireccion() {
         return direccion;
     }
@@ -59,6 +72,22 @@ public class Empleado {
         this.telefono = telefono;
     }
 
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
     public boolean isEstado() {
         return estado;
     }
@@ -73,8 +102,11 @@ public class Empleado {
                 "idEmpleado=" + idEmpleado +
                 ", documento='" + documento + '\'' +
                 ", nombreEmpleado='" + nombreEmpleado + '\'' +
+                ", correo='" + correo + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", empresa='" + empresa + '\'' +
+                ", rol=" + rol +
                 ", estado=" + estado +
                 '}';
     }
