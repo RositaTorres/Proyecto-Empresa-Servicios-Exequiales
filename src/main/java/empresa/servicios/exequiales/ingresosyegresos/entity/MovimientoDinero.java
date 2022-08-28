@@ -3,10 +3,16 @@ package empresa.servicios.exequiales.ingresosyegresos.entity;
 public class MovimientoDinero {
 
     private long idMovimientoDinero;
-    private long montoMovimiento;
-    private long montos;
+    private float montoMovimiento;
     private String conceptoMovimiento;
-    private Usuario usuario;
+    private Empleado empleado;
+
+    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado) {
+        this.idMovimientoDinero = idMovimientoDinero;
+        this.montoMovimiento = montoMovimiento;
+        this.conceptoMovimiento = conceptoMovimiento;
+        this.empleado = empleado;
+    }
 
     public long getIdMovimientoDinero() {
         return idMovimientoDinero;
@@ -16,20 +22,12 @@ public class MovimientoDinero {
         this.idMovimientoDinero = idMovimientoDinero;
     }
 
-    public long getMontoMovimiento() {
+    public float getMontoMovimiento() {
         return montoMovimiento;
     }
 
-    public void setMontoMovimiento(long montoMovimiento) {
+    public void setMontoMovimiento(float montoMovimiento) {
         this.montoMovimiento = montoMovimiento;
-    }
-
-    public long getMontos() {
-        return montos;
-    }
-
-    public void setMontos(long montos) {
-        this.montos = montos;
     }
 
     public String getConceptoMovimiento() {
@@ -40,12 +38,12 @@ public class MovimientoDinero {
         this.conceptoMovimiento = conceptoMovimiento;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
     @Override
@@ -53,9 +51,8 @@ public class MovimientoDinero {
         return "MovimientoDinero{" +
                 "idMovimientoDinero=" + idMovimientoDinero +
                 ", montoMovimiento=" + montoMovimiento +
-                ", montos=" + montos +
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
-                ", usuario=" + usuario +
+                ", empleado=" + empleado +
                 '}';
     }
 }

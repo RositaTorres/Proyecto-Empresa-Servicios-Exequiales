@@ -41,7 +41,13 @@ public class TipoDocumento {
         this.estado = estado;
     }
 
+    @Override
     public String toString() {
-        return "TipoDocumento{idTipoDocumento=" + this.idTipoDocumento + ", descripcion='" + this.descripcion + "', siglas='" + this.siglas + "', estado=" + this.estado + "}";
+        return "TipoDocumento{" +
+                "idTipoDocumento=" + idTipoDocumento +
+                ", descripcion='" + descripcion + '\'' +
+                ", siglas='" + siglas + '\'' +
+                ", estado=" + estado +
+                '}';
     }
 }

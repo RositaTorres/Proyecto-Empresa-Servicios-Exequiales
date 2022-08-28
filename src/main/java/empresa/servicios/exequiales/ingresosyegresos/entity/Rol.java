@@ -32,7 +32,12 @@ public class Rol {
         this.estado = estado;
     }
 
+    @Override
     public String toString() {
-        return "Rol{idRol=" + this.idRol + ", descripcion='" + this.descripcion + "', estado=" + this.estado + "}";
+        return "Rol{" +
+                "idRol=" + idRol +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado=" + estado +
+                '}';
     }
 }
