@@ -8,6 +8,19 @@ public class Empresa {
     private String telefono;
     private boolean estado;
 
+    public Empresa(long idEmpresa, String nit, String nombreEmpresa, String direccion, String telefono, boolean estado) {
+        this.idEmpresa = idEmpresa;
+        this.nit = nit;
+        this.nombreEmpresa = nombreEmpresa;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.estado = estado;
+    }
+
+    public Empresa() {
+
+    }
+
     public long getIdEmpresa() {
         return idEmpresa;
     }
