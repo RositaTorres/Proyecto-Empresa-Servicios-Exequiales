@@ -13,10 +13,6 @@ public class IngresosyegresosApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(IngresosyegresosApplication.class, args);
-<<<<<<< HEAD
-=======
-	
->>>>>>> 80a10a9c4fbf0f786bb23db0286a9e2fd981db52
 
 		
 	Empresa Funeraria = new Empresa(1, "80098967", "Servicios Excequiales", "Avenida siempre viva 123", "3145678900", true);
@@ -38,12 +34,8 @@ public class IngresosyegresosApplication {
 		Ingreso.setMontoMovimiento(200F);
 		System.out.println(Ingreso.getMontoMovimiento());
 
-<<<<<<< HEAD
-}
-	
-=======
 	
 	}
->>>>>>> 80a10a9c4fbf0f786bb23db0286a9e2fd981db52
+
 
 }
