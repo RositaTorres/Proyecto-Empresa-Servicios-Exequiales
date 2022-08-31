@@ -6,7 +6,6 @@ import empresa.servicios.exequiales.ingresosyegresos.entity.MovimientoDinero;
 import empresa.servicios.exequiales.ingresosyegresos.entity.Rol;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 
 @SpringBootApplication
 public class IngresosyegresosApplication {
@@ -14,7 +13,7 @@ public class IngresosyegresosApplication {
 	public static void main(String[] args) {
 		
 		
-		SpringApplication.run(IngresosyegresosApplication.class, args);
+
 
 		Empresa Funeraria = new Empresa(1,"80098967","Servicios Excequiales","Avenida siempre viva 123","3145678900", true);
 		System.out.println("Telefono anterior " + Funeraria.getTelefono());
@@ -35,6 +34,7 @@ public class IngresosyegresosApplication {
 		Ingreso.setMontoMovimiento(200F);
 		System.out.println(Ingreso.getMontoMovimiento());
 
+		SpringApplication.run(IngresosyegresosApplication.class, args);
 	}
 
 
