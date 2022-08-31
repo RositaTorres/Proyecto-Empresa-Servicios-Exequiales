@@ -25,7 +25,7 @@ public class IngresosyegresosApplication {
 
 		Empleado Juan = new Empleado(1,"1020456798","Juan Perez",Funeraria,"Juan@correo.com","Calle  123","3214567890", new Rol(),true);
 		System.out.println("Documento Errado " + Juan.getDocumento());
-		Juan.setDocumento("Nueva empresa " + "10306579876");
+		Juan.setDocumento("Nueva Documento " + "10306579876");
 		System.out.println(Juan.getDocumento());
 
 		//////_________________________________________________________
