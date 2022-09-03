@@ -15,7 +15,7 @@ public class IngresosyegresosApplication {
 		
 
 
-		Empresa Funeraria = new Empresa(1,"80098967","Servicios Excequiales","Avenida siempre viva 123","3145678900", true);
+		Empresa Funeraria = new Empresa(1,"80098967","Servicios Exequiales","Avenida siempre viva 123","3145678900", true);
 		System.out.println("Telefono anterior " + Funeraria.getTelefono());
 		Funeraria.setTelefono("Nuevo Telefono " + "3204657892");
 		System.out.println(Funeraria.getTelefono());

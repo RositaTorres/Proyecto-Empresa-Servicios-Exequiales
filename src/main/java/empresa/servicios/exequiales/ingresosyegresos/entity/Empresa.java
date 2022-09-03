@@ -20,7 +20,6 @@ public class Empresa {
     public Empresa() {
 
     }
-
     public long getIdEmpresa() {
         return idEmpresa;
     }
