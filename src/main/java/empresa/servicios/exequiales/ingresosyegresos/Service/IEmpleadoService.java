@@ -1,7 +1,7 @@
 package empresa.servicios.exequiales.ingresosyegresos.Service;
 
 import empresa.servicios.exequiales.ingresosyegresos.entity.Empleado;
-import empresa.servicios.exequiales.ingresosyegresos.entity.Empresa;
+
 
 import java.util.List;
 
