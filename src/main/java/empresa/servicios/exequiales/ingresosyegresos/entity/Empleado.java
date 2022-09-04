@@ -22,6 +22,11 @@ public class Empleado {
         this.telefono = telefono;
         this.rol = rol;
         this.estado = estado;
+
+    }
+
+    public Empleado() {
+
     }
 
     public long getIdEmpleado() {
