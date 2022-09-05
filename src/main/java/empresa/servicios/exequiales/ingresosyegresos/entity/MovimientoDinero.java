@@ -6,12 +6,23 @@ public class MovimientoDinero {
     private float montoMovimiento;
     private String conceptoMovimiento;
     private Empleado empleado;
+    private Empresa empresa;
 
-    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado) {
+    private Plan plan;
+
+    private Producto producto;
+
+    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Plan plan, Producto producto) {
         this.idMovimientoDinero = idMovimientoDinero;
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
         this.empleado = empleado;
+        this.empresa = empresa;
+        this.plan = plan;
+        this.producto = producto;
+    }
+    public MovimientoDinero(){
+
     }
 
     public long getIdMovimientoDinero() {
@@ -46,6 +57,26 @@ public class MovimientoDinero {
         this.empleado = empleado;
     }
 
+    public Empresa getEmpresa() { return empresa; }
+
+    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
     @Override
     public String toString() {
         return "MovimientoDinero{" +
@@ -53,6 +84,9 @@ public class MovimientoDinero {
                 ", montoMovimiento=" + montoMovimiento +
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
                 ", empleado=" + empleado +
+                ", empresa=" + empresa +
+                ", plan=" + plan +
+                ", producto=" + producto +
                 '}';
     }
 }

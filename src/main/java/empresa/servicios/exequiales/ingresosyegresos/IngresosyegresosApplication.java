@@ -1,9 +1,6 @@
 package empresa.servicios.exequiales.ingresosyegresos;
 
-import empresa.servicios.exequiales.ingresosyegresos.entity.Empleado;
-import empresa.servicios.exequiales.ingresosyegresos.entity.Empresa;
-import empresa.servicios.exequiales.ingresosyegresos.entity.MovimientoDinero;
-import empresa.servicios.exequiales.ingresosyegresos.entity.Rol;
+import empresa.servicios.exequiales.ingresosyegresos.entity.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -29,13 +26,25 @@ public class IngresosyegresosApplication {
 
 	//////_________________________________________________________
 
-	MovimientoDinero Ingreso = new MovimientoDinero(1, 2323, "Ingreso", Juan);
-		System.out.println("Ingreso "+Ingreso.getMontoMovimiento());
-		Ingreso.setMontoMovimiento(200F);
-		System.out.println(Ingreso.getMontoMovimiento());
+	MovimientoDinero Compra = new MovimientoDinero(1, 300000, "Sala de Velacion",new Empleado(), new Empresa(),new Plan(),new Producto() );
+		System.out.println("Compra "+Compra.getMontoMovimiento());
+		Compra.setMontoMovimiento(200F);
+		System.out.println("Cambio de precio "+Compra.getMontoMovimiento());
 
+	//////_________________________________________________________
+
+	Plan Basico = new Plan (1, "Basico Cundinamarca" , true,"Cenizario", 500000);
+		System.out.println("Cambio Nombre Plan" +Basico.getNombrePlan());
+		Basico.setNombrePlan("Basico Bogota");
+		System.out.println(Basico.getNombrePlan());
+
+	//////_________________________________________________________
+
+	Producto cofre = new Producto (1,"Cofre Azul",500000,true);
+		System.out.println("Cambio precio del producto" +cofre.getValorProducto());
+		cofre.setValorProducto(1200000);
+		System.out.println(cofre.getValorProducto());
 
 	}
-
-
 }
+
