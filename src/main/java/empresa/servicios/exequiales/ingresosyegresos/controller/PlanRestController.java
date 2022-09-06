@@ -14,18 +14,18 @@ public class PlanRestController {
     @Autowired
     private IPlanService planService;
 
-    @GetMapping("/plan/{id}")
+    @GetMapping("/plans/{id}")
     public Plan findById(@PathVariable int id) { return planService.findById(id);  }
 
-    @GetMapping("/plan")
+    @GetMapping("/plans")
     public List<Plan> findAll(){ return planService.findAll(); }
 
-    @PostMapping("/plan")
+    @PostMapping("/plans")
     public Plan createPlan(@RequestBody Plan plan){ return planService.creatPlan(plan); }
 
-    @PatchMapping("/plan/{id}")
+    @PatchMapping("/plans/{id}")
     public Plan updatePlan(@PathVariable int id, @RequestBody Plan plan){ return planService.updatePlan(id, plan);}
 
-    @DeleteMapping("/plan/{id}")
+    @DeleteMapping("/plans/{id}")
     public void deletPlan(@PathVariable int id) { planService.deletPlan(id); }
 }

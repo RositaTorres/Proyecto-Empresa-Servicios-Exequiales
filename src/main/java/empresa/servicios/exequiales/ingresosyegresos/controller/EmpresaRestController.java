@@ -1,7 +1,7 @@
 package empresa.servicios.exequiales.ingresosyegresos.controller;
 
 import empresa.servicios.exequiales.ingresosyegresos.Service.IEmpresaService;
-import empresa.servicios.exequiales.ingresosyegresos.entity.Empresa;
+import empresa.servicios.exequiales.ingresosyegresos.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +12,19 @@ import java.util.List;
 @RequestMapping("/api")
 
 public class EmpresaRestController {
+
+    static  List<Empresa> lista = new ArrayList<Empresa>();
+
+    static {
+        Empresa e= new Empresa(1, "80889956-9", "Exequiales Escocia SAS", "Cll 45 con 23 Esquina", "24658936", false);
+        e.addLinea(new MovimientoDinero(1,500000, "Venta plan Vida Enterna", new Empleado(), new Empresa(), new Plan(), new Producto()));
+
+        Empresa e1= new Empresa(2, "808568956-9", "Exequiales Martinez", "Cra. 123 NO. 25-14", "2568965", false);
+        e1.addLinea(new MovimientoDinero(2,250000, "Venta Plan Basico Cali",new Empleado(), new Empresa(),new Plan(), new Producto()));
+
+        lista.add(e);
+        lista.add(e1);
+    }
 
     @Autowired
     private IEmpresaService empresaService;

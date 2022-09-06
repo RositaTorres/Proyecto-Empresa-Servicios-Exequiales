@@ -1,8 +1,6 @@
 package empresa.servicios.exequiales.ingresosyegresos.Service;
 
 import empresa.servicios.exequiales.ingresosyegresos.entity.MovimientoDinero;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

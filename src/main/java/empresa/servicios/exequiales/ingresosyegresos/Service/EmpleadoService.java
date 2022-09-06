@@ -79,9 +79,9 @@ public class EmpleadoService implements IEmpleadoService {
         empleado2.setNombreEmpleado("Lucas Martinez");
         empleado2.setDireccion("Cll. 69a NO. 43-14");
         empleado2.setTelefono("3124567894");
-        empleado2.setCorreo("Pepito.1@correo.com");
+        empleado2.setCorreo("lucas.1@correo.com");
         Rol rol2 = new Rol();
-        rol2.setIdRol(1);
+        rol2.setIdRol(2);
         rol2.setDescripcion("User");
         rol2.setEstado(true);
         empleado2.setRol(rol2);
@@ -96,6 +96,7 @@ public class EmpleadoService implements IEmpleadoService {
         Empleado creatempleado = new Empleado();
         creatempleado.setDocumento(empleado.getDocumento());
         creatempleado.setNombreEmpleado(empleado.getNombreEmpleado());
+        creatempleado.setCorreo(empleado.getCorreo());
         creatempleado.setDireccion(empleado.getDireccion());
         creatempleado.setTelefono(empleado.getTelefono());
         creatempleado.setEstado(empleado.isEstado());
@@ -107,6 +108,7 @@ public class EmpleadoService implements IEmpleadoService {
         Empleado patchempleado = findById(id);
         patchempleado.setDocumento(empleado.getDocumento());
         patchempleado.setNombreEmpleado(empleado.getNombreEmpleado());
+        patchempleado.setCorreo(empleado.getCorreo());
         patchempleado.setDireccion(empleado.getDireccion());
         patchempleado.setTelefono(empleado.getTelefono());
         patchempleado.setEstado(empleado.isEstado());

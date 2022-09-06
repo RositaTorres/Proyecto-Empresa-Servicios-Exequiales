@@ -1,7 +1,6 @@
 package empresa.servicios.exequiales.ingresosyegresos.Service;
 
 import empresa.servicios.exequiales.ingresosyegresos.entity.Plan;
-
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class PlanService implements IPlanService{
         planes.add(plan1);
 
         Plan plan2 = new Plan();
-        plan2.setIdPlan(1);
+        plan2.setIdPlan(2);
         plan2.setNombrePlan("Basico Cundinamarca");
         plan2.setEstadoPlan(true);
         planes.add(plan2);

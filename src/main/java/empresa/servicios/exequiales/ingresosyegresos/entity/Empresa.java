@@ -1,5 +1,8 @@
 package empresa.servicios.exequiales.ingresosyegresos.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Empresa {
     private long idEmpresa; // variable de tipo objeto
     private String nit;
@@ -7,6 +10,7 @@ public class Empresa {
     private String direccion;
     private String telefono;
     private boolean estado;
+    private List<MovimientoDinero> lineas = new ArrayList<MovimientoDinero>();
 
     public Empresa(long idEmpresa, String nit, String nombreEmpresa, String direccion, String telefono, boolean estado) {
         this.idEmpresa = idEmpresa;
@@ -68,6 +72,18 @@ public class Empresa {
         this.estado = estado;
     }
 
+    public List<MovimientoDinero> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(List<MovimientoDinero> lineas) {
+        this.lineas = lineas;
+    }
+
+    public void addLinea(MovimientoDinero linea) {
+        this.lineas.add(linea);
+    }
+
     @Override
     public String toString() {
         return "Empresa{" +
@@ -77,6 +93,7 @@ public class Empresa {
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", estado=" + estado +
+                ", lineas=" + lineas +
                 '}';
     }
 }

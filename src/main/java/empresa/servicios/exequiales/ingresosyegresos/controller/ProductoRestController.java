@@ -15,26 +15,26 @@ public class ProductoRestController {
     @Autowired
     private IProductoService productoService;
 
-    @GetMapping("/producto/{id}")
+    @GetMapping("/products/{id}")
     public Producto findById(@PathVariable int id) { // Read - Get
         return productoService.findById(id);
     }
-    @GetMapping("/producto")
+    @GetMapping("/products")
     public List<Producto> findAll(){ // get listado
         return productoService.findAll();
     }
 
-    @PostMapping("/producto")
+    @PostMapping("/products")
     public Producto createEmpresa(@RequestBody Producto producto){ // Post - Crear
         return productoService.creatProducto(producto);
     }
 
-    @PatchMapping("/producto/{id}")
+    @PatchMapping("/products/{id}")
     public Producto updateProducto(@PathVariable int id, @RequestBody Producto producto){ // patch actualizar
         return productoService.updateProducto(id, producto);
     }
 
-    @DeleteMapping("/producto/{id}")
+    @DeleteMapping("/products/{id}")
     public void deletProducto(@PathVariable int id) { // borrar
         productoService.deletProducto(id);
     }

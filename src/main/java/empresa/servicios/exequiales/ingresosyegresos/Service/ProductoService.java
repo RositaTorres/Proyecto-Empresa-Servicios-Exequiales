@@ -11,7 +11,7 @@ public class ProductoService implements IProductoService {
 
     public Producto findById(int id) {
         Producto producto = new Producto();
-        producto.setIdProducto(id);
+        producto.setIdProducto(1);
         producto.setNombreProducto("Cofre Azul");
         producto.setEstadoProducto(true);
         return producto;

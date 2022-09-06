@@ -21,6 +21,7 @@ public class MovimientoDinero {
         this.plan = plan;
         this.producto = producto;
     }
+
     public MovimientoDinero(){
 
     }

@@ -1,10 +1,11 @@
 package empresa.servicios.exequiales.ingresosyegresos.Service;
 
 import empresa.servicios.exequiales.ingresosyegresos.entity.Rol;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class RolService implements IRolService {
 
     @Override
@@ -23,10 +24,13 @@ public class RolService implements IRolService {
         rol1.setIdRol(1);
         rol1.setDescripcion("Admin");
         rol1.setEstado(true);
+        roles.add(rol1);
+
         Rol rol2 = new Rol();
-        rol2.setIdRol(1);
+        rol2.setIdRol(2);
         rol2.setDescripcion("User");
         rol2.setEstado(true);
+        roles.add(rol2);
         return roles;
     }
 
