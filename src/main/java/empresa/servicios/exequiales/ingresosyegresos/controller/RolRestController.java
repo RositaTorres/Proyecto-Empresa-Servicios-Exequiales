@@ -34,8 +34,8 @@ public class RolRestController {
     }
 
     @DeleteMapping("/roles/{id}")
-    public void deletRol(@PathVariable int id) { // borrar
-        rolService.deletRol(id);
+    public void deleteRol(@PathVariable int id) { // borrar
+        rolService.deleteRol(id);
     }
 }
 
