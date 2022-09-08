@@ -29,7 +29,7 @@ public class MovimientoRestController {
         return movimientoService.creatMovimiento(movimiento);
     }
 
-    @PatchMapping("/{enterpriseId}/movements/{movementId}")
+    @PatchMapping("/{enterpriseId}/movements/{id}")
     public MovimientoDinero updateMovimiento(@PathVariable int enterpriseId, @RequestBody MovimientoDinero movimiento){ // patch actualizar
         return movimientoService.updateMovimiento(enterpriseId, movimiento);
     }

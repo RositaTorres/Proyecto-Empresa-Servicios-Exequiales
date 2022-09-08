@@ -26,7 +26,7 @@ public class IngresosyegresosApplication {
 
 	//////_________________________________________________________
 
-	MovimientoDinero Compra = new MovimientoDinero(1, 300000, "Sala de Velacion",Juan, new Empresa(),new Plan(),new Producto() );
+	MovimientoDinero Compra = new MovimientoDinero(1, 300000, "Sala de Velacion",new Empleado(), new Empresa(),new Plan(),new Producto() );
 		System.out.println("Compra "+Compra.getMontoMovimiento());
 		Compra.setMontoMovimiento(200F);
 		System.out.println("Cambio de precio "+Compra.getMontoMovimiento());

@@ -35,7 +35,7 @@ public class EmpleadoRestController {
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteEmpleado(@PathVariable int id) { // borrar
-        empleadoService.deleteEmpleado(id);
+    public void deletEmpleado(@PathVariable int id) { // borrar
+        empleadoService.deletEmpleado(id);
     }
 }

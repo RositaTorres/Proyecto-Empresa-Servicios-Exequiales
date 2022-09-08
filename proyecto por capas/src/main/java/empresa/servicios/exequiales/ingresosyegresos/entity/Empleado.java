@@ -1,31 +1,15 @@
 package empresa.servicios.exequiales.ingresosyegresos.entity;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "empleados")
 public class Empleado {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empleado")
+
     private long idEmpleado; // variable de tipo objeto
-    @Column(name = "documento", unique = true)
     private String documento;
-    @Column(name = "nombre_empleado")
     private String nombreEmpleado;
-    @ManyToOne
-    @JoinColumn(name = "id_empresa")
     private Empresa empresa;
-    @Column(name = "correo", nullable = false)
     private String correo;
-    @Column(name = "direccion")
     private String direccion;
-    @Column(name = "telefono")
     private String telefono;
-    @ManyToOne
-    @JoinColumn(name = "id_rol")
     private Rol rol;
-    @Column(name = "estado")
     private boolean estado;
 
     public Empleado(long idEmpleado, String documento, String nombreEmpleado, Empresa empresa, String correo, String direccion, String telefono, Rol rol, boolean estado) {
@@ -38,9 +22,11 @@ public class Empleado {
         this.telefono = telefono;
         this.rol = rol;
         this.estado = estado;
+
     }
 
     public Empleado() {
+
     }
 
     public long getIdEmpleado() {
