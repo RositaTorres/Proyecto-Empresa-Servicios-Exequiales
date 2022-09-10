@@ -10,7 +10,7 @@ public interface IRolService {
 
     public List<Rol> findAll();
 
-    public Rol createRol(Rol rol);
+    public Rol createRol (Rol rol);
 
     public Rol updateRol(int id, Rol rol);
 

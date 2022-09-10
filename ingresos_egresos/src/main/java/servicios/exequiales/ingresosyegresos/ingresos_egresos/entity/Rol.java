@@ -1,8 +1,18 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "roles")
 public class Rol {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_rol", nullable = false)
     private long idRol;
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
+    @Column(name = "estado", nullable = false)
     private boolean estado;
 
     public Rol() {

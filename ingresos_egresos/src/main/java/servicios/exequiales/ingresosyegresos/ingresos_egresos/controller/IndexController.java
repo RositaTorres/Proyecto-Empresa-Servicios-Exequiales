@@ -14,9 +14,9 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model){
-        LOG.log(Level.INFO,)
+        LOG.log(Level.INFO, "index");
         System.out.println(IndexController.class + "- index");
-        var mensaje= "Hola desde IndexController";
+        var mensaje= "Bienvenidos a la pagina ingresos egresos de la Funeraria";
         model.addAttribute("mensaje", mensaje);
         return "index";
 

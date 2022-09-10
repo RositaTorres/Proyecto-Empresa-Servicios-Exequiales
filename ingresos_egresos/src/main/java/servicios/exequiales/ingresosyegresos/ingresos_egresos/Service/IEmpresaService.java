@@ -10,5 +10,5 @@ public interface IEmpresaService {
     public List<Empresa> findAll();
     public Empresa createEmpresa(Empresa empresa);
     public Empresa updateEmpresa(int id, Empresa empresa);
-    public void deletEmpresa(int id);
+    public void deleteEmpresa(int id);
 }

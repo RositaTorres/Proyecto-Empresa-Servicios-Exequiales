@@ -1,14 +1,26 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "empresas")
 public class Empresa {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_empresa", nullable = false)
     private long idEmpresa; // variable de tipo objeto
+    @Column(name = "nit", unique = true)
     private String nit;
+    @Column(name = "nombre_empresa")
     private String nombreEmpresa;
+    @Column(name = "direccion_empresa", nullable = false)
     private String direccion;
+    @Column(name = "telefono_empresa", nullable = false)
     private String telefono;
+    @Column(name = "estado")
     private boolean estado;
     private List<MovimientoDinero> lineas = new ArrayList<MovimientoDinero>();
 
