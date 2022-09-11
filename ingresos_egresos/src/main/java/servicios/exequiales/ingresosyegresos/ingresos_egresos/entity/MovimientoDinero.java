@@ -1,29 +1,40 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="movimientos")
 public class MovimientoDinero {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_movimiento", nullable = false)
     private long idMovimientoDinero;
+    @Column(name = "monto", nullable = false)
     private float montoMovimiento;
+    @Column(name = "concepto", nullable = false)
     private String conceptoMovimiento;
+    @ManyToOne
+    @JoinColumn(name = "id_empleado")
     private Empleado empleado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
     private Empresa empresa;
-
-    private Plan plan;
-
+    @ManyToOne
+    @JoinColumn(name = "id_producto")
     private Producto producto;
 
-    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Plan plan, Producto producto) {
+    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Producto producto) {
         this.idMovimientoDinero = idMovimientoDinero;
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
         this.empleado = empleado;
         this.empresa = empresa;
-        this.plan = plan;
         this.producto = producto;
     }
 
-    public MovimientoDinero(){
-
+    public MovimientoDinero() {
     }
 
     public long getIdMovimientoDinero() {
@@ -58,16 +69,12 @@ public class MovimientoDinero {
         this.empleado = empleado;
     }
 
-    public Empresa getEmpresa() { return empresa; }
-
-    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
-
-    public Plan getPlan() {
-        return plan;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setPlan(Plan plan) {
-        this.plan = plan;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public Producto getProducto() {
@@ -86,7 +93,6 @@ public class MovimientoDinero {
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
                 ", empleado=" + empleado +
                 ", empresa=" + empresa +
-                ", plan=" + plan +
                 ", producto=" + producto +
                 '}';
     }

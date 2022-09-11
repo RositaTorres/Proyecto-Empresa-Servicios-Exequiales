@@ -1,21 +1,33 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="productos")
 public class Producto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_producto",nullable = false)
+    private long idProducto;
+    @Column(name="nombre",nullable = false)
+    private String nombreProducto;
+    @Column(name="valor",nullable = false)
+    private float valorProducto;
+    @Column(name="estado",nullable = false)
+    private boolean estadoProducto;
 
-    public long idProducto;
-    public String nombreProducto;
-    public float valorProducto;
-    public boolean estadoProducto;
+    @JoinColumn(name="movimiento")
+    private MovimientoDinero movimientoDinero;
 
-    public Producto(long idProducto, String nombreProducto, float valorProducto, boolean estadoProducto) {
+    public Producto(long idProducto, String nombreProducto, float valorProducto, boolean estadoProducto, MovimientoDinero movimientoDinero) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.valorProducto = valorProducto;
         this.estadoProducto = estadoProducto;
+        this.movimientoDinero = movimientoDinero;
     }
 
     public Producto() {
-
     }
 
     public long getIdProducto() {
@@ -46,6 +58,14 @@ public class Producto {
 
     public void setValorProducto(float valorProducto) { this.valorProducto = valorProducto; }
 
+    public MovimientoDinero getMovimientoDinero() {
+        return movimientoDinero;
+    }
+
+    public void setMovimientoDinero(MovimientoDinero movimientoDinero) {
+        this.movimientoDinero = movimientoDinero;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +
@@ -53,6 +73,7 @@ public class Producto {
                 ", nombreProducto='" + nombreProducto + '\'' +
                 ", valorProducto=" + valorProducto +
                 ", estadoProducto=" + estadoProducto +
+                ", movimientoDinero=" + movimientoDinero +
                 '}';
     }
 }

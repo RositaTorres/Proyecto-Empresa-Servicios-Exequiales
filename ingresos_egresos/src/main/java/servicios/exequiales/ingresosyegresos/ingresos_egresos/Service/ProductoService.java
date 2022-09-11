@@ -1,59 +1,42 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.Service;
 
+import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.MovimientoDinero;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Producto;
 import org.springframework.stereotype.Service;
+import servicios.exequiales.ingresosyegresos.ingresos_egresos.repository.IProductoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoService implements IProductoService {
 
+    private IProductoRepository productoRepository;
+
     public Producto findById(int id) {
-        Producto producto = new Producto();
-        producto.setIdProducto(1);
-        producto.setNombreProducto("Cofre Azul");
-        producto.setEstadoProducto(true);
-        return producto;
+        Optional<Producto> producto = productoRepository.findById((long) id);
+        return producto.get();
     }
 
     @Override
     public List<Producto> findAll() {
-        List<Producto> productos = new ArrayList<Producto>();
-        Producto producto1 = new Producto();
-        producto1.setIdProducto(1);
-        producto1.setNombreProducto("Sala de velacion");
-        producto1.setValorProducto(350000);
-        producto1.setEstadoProducto(true);
-        productos.add(producto1);
-
-        Producto producto2 = new Producto();
-        producto2.setIdProducto(2);
-        producto2.setNombreProducto("Acompañamiento Musical");
-        producto2.setValorProducto(500000);
-        producto2.setEstadoProducto(true);
-        productos.add(producto2);
+        List<Producto> productos = (List<Producto>) productoRepository.findAll();
         return productos;
     }
 
     @Override
     public Producto creatProducto(Producto producto) {
-        Producto creatproducto = new Producto();
-        creatproducto.setNombreProducto(producto.getNombreProducto());
-        creatproducto.setValorProducto(producto.getValorProducto());
-        creatproducto.setEstadoProducto(producto.isEstadoProducto());
-        return creatproducto;
+        Producto newproducto = productoRepository.save(producto);
+        return newproducto;
     }
     @Override
     public Producto updateProducto(int id, Producto producto) {
-        Producto patchproducto = findById(id);
-        patchproducto.setNombreProducto(producto.getNombreProducto());
-        patchproducto.setValorProducto(producto.getValorProducto());
-        patchproducto.setEstadoProducto(producto.isEstadoProducto());
-        return patchproducto;
+        Producto putProducto = productoRepository.save(producto);
+        return putProducto;
     }
 
     @Override
-    public void deletProducto(int id) { Producto deletProducto = findById(id); }
+    public void deletProducto(int id) {productoRepository.deleteById((long)id); }
 
 }
