@@ -40,7 +40,7 @@ public class RolService implements IRolService {
     }
 
     @Override
-    public void deletRol(int id) {
+    public void deleteRol(int id) {
         rolRepository.deleteById((long) id);
     }
 }

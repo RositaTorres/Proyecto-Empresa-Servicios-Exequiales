@@ -14,5 +14,5 @@ public interface IRolService {
 
     public Rol updateRol(int id, Rol rol);
 
-    public void deletRol(int id);
+    public void deleteRol(int id);
 }

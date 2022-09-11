@@ -6,30 +6,30 @@ import javax.persistence.*;
 @Table(name = "empleados")
 public class Empleado {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empleado", nullable = false)
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "id_empleado", nullable = false)
     private long idEmpleado; // variable de tipo objeto
 
-    @Column(name = "documento", unique = true)
+    @Column(name = "ducumento", unique = true)
     private String documento;
     @Column(name = "nombre_empleado")
     private String nombreEmpleado;
     @ManyToOne
-    @JoinColumn(name = "id_empresa")
+    @JoinColumn(name = "id_empresa", nullable = false)
     private Empresa empresa;
-    @Column(name = "correo_empleado", nullable = false)
+    @Column(name = "correo")
     private String correo;
-    @Column(name = "direccion_empleado", nullable = false)
+    @Column(name = "direccion")
     private String direccion;
-    @Column(name = "telefono_empleado", nullable = false)
+    @Column(name = "telefono")
     private String telefono;
     @ManyToOne
-    @JoinColumn(name = "id_rol")
+    @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
     @Column(name = "area_empleado")
     private AreaEmpleado areaEmpleado;
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     private boolean estado;
 
 
