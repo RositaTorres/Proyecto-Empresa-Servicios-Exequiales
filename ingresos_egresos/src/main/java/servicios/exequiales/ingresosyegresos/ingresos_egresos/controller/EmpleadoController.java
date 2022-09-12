@@ -24,14 +24,14 @@ public class EmpleadoController {
 
     private final Logger LOG = Logger.getLogger("" +EmpleadoController.class);
 
-    @GetMapping("/empleados/lista")
+    @GetMapping("/empleados/list")
     public String getListEmpleados(Model model) {
         LOG.log(Level.INFO, "getListEmpleados");
         List<Empleado> empleados = empleadoService.findAll();
         for (Empleado user : empleados)
             System.out.println(user.toString());
         model.addAttribute("empleados", empleados);
-        return "empleados/lista";
+        return "empleados/list";
     }
 
     @GetMapping("/empleados/modificar")

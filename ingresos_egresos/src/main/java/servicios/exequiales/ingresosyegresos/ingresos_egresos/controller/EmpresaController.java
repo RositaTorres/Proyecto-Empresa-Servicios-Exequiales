@@ -18,14 +18,14 @@ public class EmpresaController {
     private IEmpresaService empresaService;
     private final Logger LOG = Logger.getLogger("" + EmpresaController.class);
 
-    @GetMapping("/empresas/lista")
+    @GetMapping("/empresas/list")
     public String getListEmpresas(Model model) {
         LOG.log(Level.INFO, "getListEmpresas");
         List<Empresa> empresas = empresaService.findAll();
         for (Empresa empresa : empresas)
             System.out.println(empresa.toString());
         model.addAttribute("empresas", empresas);
-        return "empresas/lista";
+        return "empresas/list";
     }
 
 
