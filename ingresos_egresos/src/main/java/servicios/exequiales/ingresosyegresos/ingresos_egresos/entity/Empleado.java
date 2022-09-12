@@ -6,30 +6,30 @@ import javax.persistence.*;
 @Table(name = "empleados")
 public class Empleado {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "id_empleado", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_empleado")
     private long idEmpleado; // variable de tipo objeto
 
-    @Column(name = "ducumento", unique = true)
+    @Column(name = "documento", unique = true)
     private String documento;
-    @Column(name = "nombre_empleado")
-    private String nombreEmpleado;
+    @Column(name = "nombre")
+    private String nombre;
     @ManyToOne
-    @JoinColumn(name = "id_empresa", nullable = false)
+    @JoinColumn(name = "id_empresa")
     private Empresa empresa;
-    @Column(name = "correo")
+    @Column(name = "correo", nullable = false)
     private String correo;
-    @Column(name = "direccion")
+    @Column(name = "direccion", nullable = false)
     private String direccion;
-    @Column(name = "telefono")
+    @Column(name = "telefono", nullable = false)
     private String telefono;
     @ManyToOne
-    @JoinColumn(name = "id_rol", nullable = false)
+    @JoinColumn(name = "id_rol")
     private Rol rol;
     @Column(name = "area_empleado")
     private AreaEmpleado areaEmpleado;
-    @Column(name = "estado", nullable = false)
+    @Column(name = "estado")
     private boolean estado;
 
 
@@ -49,12 +49,12 @@ public class Empleado {
         this.documento = documento;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreEmpleado(String nombreEmpleado) {
-        this.nombreEmpleado = nombreEmpleado;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Empresa getEmpresa() {
@@ -118,7 +118,7 @@ public class Empleado {
         return "Empleado{" +
                 "idEmpleado=" + idEmpleado +
                 ", documento='" + documento + '\'' +
-                ", nombreEmpleado='" + nombreEmpleado + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", empresa='" + empresa + '\'' +
                 ", correo='" + correo + '\'' +
                 ", direccion='" + direccion + '\'' +

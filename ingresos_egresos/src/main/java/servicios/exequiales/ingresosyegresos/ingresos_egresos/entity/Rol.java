@@ -18,9 +18,6 @@ public class Rol {
     private boolean estado;
 
 
-    public Rol() {
-    }
-
     public long getIdRol() {
         return this.idRol;
     }

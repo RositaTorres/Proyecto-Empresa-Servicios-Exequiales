@@ -6,12 +6,13 @@
     <title>Inicio</title>
 </head>
 <body>
-<p th:text="${mensaje}"> lista </p>
-<a th:href="@{/usuarios/list}">Sistema de gestión de Usuarios</a>
-<br>
-<a>Sistema de gestión de Empresas</a>
-<br>
-<a>Sistema de gestión de Movimientos</a>
-<br>
+    <h1>Menu</h1>
+    <p th:text="${mensaje}"> lista </p>
+    <a th:href="@{/empleados/lista}">Sistema de gestión de Usuarios</a>
+    <br>
+    <a th:href="@{/empresas/lista}">Sistema de gestión de Empresas</a>
+    <br>
+    <a>Sistema de gestión de Movimientos</a>
+    <br>
 </body>
 </html>

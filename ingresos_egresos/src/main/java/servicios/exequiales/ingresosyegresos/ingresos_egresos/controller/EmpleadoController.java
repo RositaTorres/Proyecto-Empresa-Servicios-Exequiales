@@ -5,12 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpleadoService;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IRolService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Rol;
+import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.*;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -25,22 +22,19 @@ public class EmpleadoController {
     @Autowired
     private IRolService rolService;
 
-    @Autowired
-    private IEmpresaService empresaService;
-
     private final Logger LOG = Logger.getLogger("" +EmpleadoController.class);
 
-    @GetMapping("/empleados/list")
-    public String getListUsuarios(Model model) {
-        LOG.log(Level.INFO, "getListUsusarios");
+    @GetMapping("/empleados/lista")
+    public String getListEmpleados(Model model) {
+        LOG.log(Level.INFO, "getListEmpleados");
         List<Empleado> empleados = empleadoService.findAll();
         for (Empleado user : empleados)
             System.out.println(user.toString());
         model.addAttribute("empleados", empleados);
-        return "empleados/list";
+        return "empleados/lista";
     }
 
-    @GetMapping("/empleados/crear")
+    @GetMapping("/empleados/modificar")
     public String createEmpleado(Model modelo) {
         LOG.log(Level.INFO, "createEmpleado");
         //Empleado
@@ -50,8 +44,6 @@ public class EmpleadoController {
         List<Rol> roles = rolService.findAll();
         modelo.addAttribute("roles", roles);
         //Empresa
-        List<Empresa> empresas = empresaService.findAll();
-        modelo.addAttribute("tiposDocumentos", empresas);
         return "empleados/modificar";
     }
 
@@ -61,6 +53,6 @@ public class EmpleadoController {
         user.setEstado(true);
         System.out.println(user.toString());
         user = empleadoService.createEmpleado(user);
-        return "redirect:/empleados/list";
+        return "redirect:/empleados/lista";
     }
 }

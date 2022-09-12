@@ -23,7 +23,7 @@ public class Empresa {
 
     @Column(name = "estado", nullable = false)
     private boolean estado;
-    private List<MovimientoDinero> lineas = new ArrayList<MovimientoDinero>();
+//    private List<MovimientoDinero> lineas = new ArrayList<MovimientoDinero>();
 
     public Empresa(long idEmpresa, String nit, String nombreEmpresa, String direccion, String telefono, boolean estado) {
         this.idEmpresa = idEmpresa;
@@ -85,17 +85,17 @@ public class Empresa {
         this.estado = estado;
     }
 
-    public List<MovimientoDinero> getLineas() {
-        return lineas;
-    }
-
-    public void setLineas(List<MovimientoDinero> lineas) {
-        this.lineas = lineas;
-    }
-
-    public void addLinea(MovimientoDinero linea) {
-        this.lineas.add(linea);
-    }
+//    public List<MovimientoDinero> getLineas() {
+//        return lineas;
+//    }
+//
+//    public void setLineas(List<MovimientoDinero> lineas) {
+//        this.lineas = lineas;
+//    }
+//
+//    public void addLinea(MovimientoDinero linea) {
+//        this.lineas.add(linea);
+//    }
 
     @Override
     public String toString() {
@@ -106,7 +106,7 @@ public class Empresa {
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", estado=" + estado +
-                ", lineas=" + lineas +
+//                ", lineas=" + lineas +
                 '}';
     }
 }
