@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 
@@ -33,12 +34,17 @@ public class EmpresaController {
 
     public String creatEmpresa(Model modelo) {
         LOG.log(Level.INFO, "createEmpresa");
-        //Empresa
         Empresa empresa = new Empresa();
         modelo.addAttribute("empresa", empresa);
-        //Roles
-        //List<Rol> roles = rolService.findAll();
-//        modelo.addAttribute("roles", roles);
         return "empresas/modificar";
     }
+    @PostMapping("/guardar")
+    public String guardarEmpresa(Empresa empresa){
+        LOG.log(Level.INFO,"guardarEmpresa");
+        empresa.setEstado(true);
+        System.out.println(empresa.toString());
+        empresa = empresaService.createEmpresa(empresa);
+        return "redirect:/empresas/list";
+
+}
 }

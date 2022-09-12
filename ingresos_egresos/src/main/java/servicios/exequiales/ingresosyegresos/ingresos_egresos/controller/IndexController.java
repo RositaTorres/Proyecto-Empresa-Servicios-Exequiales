@@ -16,7 +16,7 @@ public class IndexController {
     public String index(Model model){
         LOG.log(Level.INFO, "index");
         System.out.println(IndexController.class + "- index");
-        var mensaje= "Bienvenidos a la pagina ingresos egresos de la Funeraria";
+        var mensaje= "Bienvenidos al sistema de gestion de ingresos egresos para Funerarias";
         model.addAttribute("mensaje", mensaje);
         return "index";
 
