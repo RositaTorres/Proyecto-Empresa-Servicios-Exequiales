@@ -16,11 +16,11 @@ public class EmpresaController {
 
     @Autowired
     private IEmpresaService empresaService;
-    private final Logger LOG = Logger.getLogger(""+EmpresaController.class);
+    private final Logger LOG = Logger.getLogger("" + EmpresaController.class);
 
     @GetMapping("/empresas/lista")
-    public String getListEmpresas(Model model){
-        LOG.log(Level.INFO,"getListEmpresas");
+    public String getListEmpresas(Model model) {
+        LOG.log(Level.INFO, "getListEmpresas");
         List<Empresa> empresas = empresaService.findAll();
         for (Empresa empresa : empresas)
             System.out.println(empresa.toString());
@@ -28,9 +28,11 @@ public class EmpresaController {
         return "empresas/lista";
     }
 
+
     @GetMapping("/empresas/modificar")
-    public String creatEmpresa(Model modelo){
-        LOG.log(Level.INFO,"createEmpresa");
+
+    public String creatEmpresa(Model modelo) {
+        LOG.log(Level.INFO, "createEmpresa");
         //Empresa
         Empresa empresa = new Empresa();
         modelo.addAttribute("empresa", empresa);

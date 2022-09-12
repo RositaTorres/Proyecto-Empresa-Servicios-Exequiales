@@ -18,12 +18,14 @@
      @JoinColumn(name = "id_empleado")
      private Empleado empleado;
 
+
      @ManyToOne
      @JoinColumn(name = "id_empresa")
      private Empresa empresa;
      @ManyToMany
      @JoinColumn(name = "id_producto")
      private Producto producto;
+
 
 //    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Producto producto) {
 //        this.idMovimientoDinero = idMovimientoDinero;
@@ -34,8 +36,10 @@
 //        this.producto = producto;
 //    }
 //
+
     public MovimientoDinero() {
     }
+
 
     public long getIdMovimientoDinero() {
          return idMovimientoDinero;
