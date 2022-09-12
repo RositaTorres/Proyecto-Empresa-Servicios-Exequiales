@@ -2,6 +2,7 @@
 
 
  import javax.persistence.*;
+ import java.util.List;
 
  @Entity
  @Table(name="movimientos")
@@ -18,26 +19,25 @@
      @JoinColumn(name = "id_empleado")
      private Empleado empleado;
 
-
      @ManyToOne
      @JoinColumn(name = "id_empresa")
      private Empresa empresa;
+
      @ManyToMany
-     @JoinColumn(name = "id_producto")
-     private Producto producto;
+     @JoinTable (name= "movimiento_producto")
+     private List<Producto> productos;
 
 
-//    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Producto producto) {
-//        this.idMovimientoDinero = idMovimientoDinero;
-//        this.montoMovimiento = montoMovimiento;
-//        this.conceptoMovimiento = conceptoMovimiento;
-//        this.empleado = empleado;
-//        this.empresa = empresa;
-//        this.producto = producto;
-//    }
-//
+     public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado empleado, servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa empresa, List<Producto> productos) {
+         this.idMovimientoDinero = idMovimientoDinero;
+         this.montoMovimiento = montoMovimiento;
+         this.conceptoMovimiento = conceptoMovimiento;
+         this.empleado = empleado;
+         this.empresa = empresa;
+         this.productos = productos;
+     }
 
-    public MovimientoDinero() {
+     public MovimientoDinero() {
     }
 
 
@@ -81,12 +81,12 @@
          this.empresa = empresa;
     }
 
-     public Producto getProducto() {
-         return producto;
+     public List<Producto> getProductos() {
+         return productos;
      }
 
-     public void setProducto(Producto producto) {
-         this.producto = producto;
+     public void setProductos(List<Producto> productos) {
+         this.productos = productos;
      }
 
      @Override
@@ -97,7 +97,7 @@
                  ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
                  ", empleado=" + empleado +
                  ", empresa=" + empresa +
-                 ", producto=" + producto +
+                 ", productos=" + productos +
                  '}';
      }
  }

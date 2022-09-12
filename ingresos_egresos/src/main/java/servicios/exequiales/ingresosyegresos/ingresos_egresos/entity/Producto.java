@@ -1,6 +1,7 @@
  package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
  import javax.persistence.*;
+ import java.util.List;
 
  @Entity
  @Table(name="productos")
@@ -12,20 +13,20 @@
      @Column(name="nombre",nullable = false)
      private String nombreProducto;
      @Column(name="valor",nullable = false)
-    private float valorProducto;
+     private float valorProducto;
      @Column(name="estado",nullable = false)
      private boolean estadoProducto;
 
-     @JoinColumn(name="movimiento")
-     private MovimientoDinero movimientoDinero;
+     @ManyToMany (mappedBy ="productos")
+     private List<MovimientoDinero> movimientos;
 
-//     public Producto(long idProducto, String nombreProducto, float valorProducto, boolean estadoProducto, MovimientoDinero movimientoDinero) {
-//         this.idProducto = idProducto;
-//         this.nombreProducto = nombreProducto;
-//         this.valorProducto = valorProducto;
-//         this.estadoProducto = estadoProducto;
-//         this.movimientoDinero = movimientoDinero;
-//     }
+     public Producto(long idProducto, String nombreProducto, float valorProducto, boolean estadoProducto, List<MovimientoDinero> movimientos) {
+         this.idProducto = idProducto;
+         this.nombreProducto = nombreProducto;
+         this.valorProducto = valorProducto;
+         this.estadoProducto = estadoProducto;
+         this.movimientos   = movimientos;
+     }
 
      public Producto() {
      }
@@ -58,12 +59,12 @@
 
      public void setValorProducto(float valorProducto) { this.valorProducto = valorProducto; }
 
-     public MovimientoDinero getMovimientoDinero() {
-         return movimientoDinero;
+     public List<MovimientoDinero> getMovimientos() {
+         return movimientos;
      }
 
-     public void setMovimientoDinero(MovimientoDinero movimientoDinero) {
-         this.movimientoDinero = movimientoDinero;
+     public void setMovimientos(List<MovimientoDinero> movimientos) {
+         this.movimientos = movimientos;
      }
 
      @Override
@@ -73,7 +74,7 @@
                  ", nombreProducto='" + nombreProducto + '\'' +
                  ", valorProducto=" + valorProducto +
                  ", estadoProducto=" + estadoProducto +
-                 ", movimientoDinero=" + movimientoDinero +
+                 ", movimientos=" + movimientos +
                  '}';
      }
  }
