@@ -53,6 +53,6 @@ public class EmpleadoController {
         user.setEstado(true);
         System.out.println(user.toString());
         user = empleadoService.createEmpleado(user);
-        return "redirect:/empleados/lista";
+        return "redirect:/empleados/list";
     }
 }
