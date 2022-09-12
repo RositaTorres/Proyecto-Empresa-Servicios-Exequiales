@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--comentarios -->
     <meta charset="UTF-8">
-    <title>Inicio</title>
+    <title>Sistema de Gestión de Ingresos y Gastos</title>
 </head>
 <body>
-<p th:text="${mensaje}"> lista </p>
-<a th:href="@{/usuarios/list}">Sistema de gestión de Usuarios</a>
-<br>
-<a>Sistema de gestión de Empresas</a>
-<br>
-<a>Sistema de gestión de Movimientos</a>
-<br>
+    <h1>Sistema de Gestión de Ingresos y Gastos</h1>
+    <a th:href="@{/usuarios/list}">Sistema de gestión de Usuarios</a>
+    <br><br>
+    <a th:href="@{/empresas/list}">Sistema de gestión de Empresas</a>
+    <br><br>
+    <a th:href="@{/movimientos/list}">Sistema de gestión de Movimientos</a>
+    <br>
 </body>
 </html>

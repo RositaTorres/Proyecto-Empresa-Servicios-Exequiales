@@ -21,21 +21,21 @@ public class MovimientoDinero {
     @ManyToOne
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "id_producto")
     private Producto producto;
 
-    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Producto producto) {
-        this.idMovimientoDinero = idMovimientoDinero;
-        this.montoMovimiento = montoMovimiento;
-        this.conceptoMovimiento = conceptoMovimiento;
-        this.empleado = empleado;
-        this.empresa = empresa;
-        this.producto = producto;
-    }
-
-    public MovimientoDinero() {
-    }
+//    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Producto producto) {
+//        this.idMovimientoDinero = idMovimientoDinero;
+//        this.montoMovimiento = montoMovimiento;
+//        this.conceptoMovimiento = conceptoMovimiento;
+//        this.empleado = empleado;
+//        this.empresa = empresa;
+//        this.producto = producto;
+//    }
+//
+//    public MovimientoDinero() {
+//    }
 
     public long getIdMovimientoDinero() {
         return idMovimientoDinero;
