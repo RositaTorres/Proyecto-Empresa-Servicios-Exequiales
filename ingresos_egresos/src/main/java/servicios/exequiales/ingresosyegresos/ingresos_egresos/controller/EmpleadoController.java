@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/empleado")
+
 public class EmpleadoController {
 
     @Autowired
@@ -49,7 +49,7 @@ public class EmpleadoController {
         return "empleados/modificar";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/empleados/guardar")
     public String guardarEmpleado(Empleado user){
         LOG.log(Level.INFO, "guardarEmpleado");
         user.setEstado(true);

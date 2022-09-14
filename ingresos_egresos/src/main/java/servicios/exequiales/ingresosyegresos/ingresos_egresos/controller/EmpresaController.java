@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/empresa")
+
 public class EmpresaController {
 
     @Autowired
@@ -41,13 +41,20 @@ public class EmpresaController {
         return "empresas/modificar";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/empresas/guardar")
     public String guardarEmpresa(Empresa empresa) {
         LOG.log(Level.INFO, "guardarEmpresa");
         empresa.setEstado(true);
         System.out.println(empresa.toString());
         empresa = empresaService.createEmpresa(empresa);
         return "redirect:/empresas/list";
+    }
+    @GetMapping("/empresas/editar/{id}")
+    public String editEmpresa(Empresa empresa, Model modelo){
+        LOG.log(Level.INFO, "editEmpresa");
+        return"empresas/modificar";
 
     }
+
+
 }

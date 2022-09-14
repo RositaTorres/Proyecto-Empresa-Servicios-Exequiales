@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaft.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Empresas</title>
+    <meta charset="UTF-8">
+    <title>Empresas</title>
 </head>
 <body>
 <h1>Lista de empresas</h1>
@@ -11,21 +11,24 @@
 <a th:href="@{/empresas/modificar}">Nueva Empresa</a>
 <br>
 <table border="1">
-  <tr>
-    <th>Nit</th>
-    <th>Nombre</th>
-    <th>Dirección</th>
-    <th>Teléfono</th>
+    <tr>
+        <th>Nit</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    <tr th:each="empresa : ${empresa}">
+        <td th:text="${empresa.nit}"></td>
+        <td th:text="${empresa.nombre_empresa}"></td>
+        <td th:text="${empresa.direccion}"></td>
+        <td th:text="${empresa.telefono}"></td>
+        <td><a th:href="@{/editar/} + ${empresa.idEmpresa}" th:text="Editar"></a></td>
 
-  </tr>
-  <tr th:each="empresa : ${empresa}">
-    <td th:text="${empresa.nit}"></td>
-    <td th:text="${empresa.nombre_empresa}"></td>
-    <td th:text="${empresa.direccion}"></td>
-    <td th:text="${empresa.telefono}"></td>
-  </tr>
+    </tr>
 
-    </table>
+</table>
 
 <br>
 </body>
