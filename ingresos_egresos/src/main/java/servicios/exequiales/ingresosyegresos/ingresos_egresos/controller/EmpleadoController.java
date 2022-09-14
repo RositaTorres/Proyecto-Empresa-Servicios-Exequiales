@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Rol;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.*;
@@ -15,7 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
+<<<<<<< HEAD
 
+=======
+>>>>>>> eef322105140750164ee6caaff58497e39ae60e9
 public class EmpleadoController {
 
     @Autowired

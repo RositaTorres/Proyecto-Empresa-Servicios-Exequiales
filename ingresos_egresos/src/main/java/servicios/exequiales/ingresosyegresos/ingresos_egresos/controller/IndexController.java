@@ -13,6 +13,7 @@ public class IndexController {
     private final Logger LOG = Logger.getLogger(""+IndexController.class);
 
     @GetMapping("/")
+
     public String index(Model model){
         LOG.log(Level.INFO, "index");
         System.out.println(IndexController.class + "- index");
