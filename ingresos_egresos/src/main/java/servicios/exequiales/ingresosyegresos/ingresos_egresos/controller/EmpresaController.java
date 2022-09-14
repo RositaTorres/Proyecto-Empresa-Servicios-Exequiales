@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 
@@ -14,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/empresa")
+
 public class EmpresaController {
 
     @Autowired
@@ -41,7 +40,7 @@ public class EmpresaController {
         return "empresas/modificar";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/empresas/guardar")
     public String guardarEmpresa(Empresa empresa) {
         LOG.log(Level.INFO, "guardarEmpresa");
         empresa.setEstado(true);
