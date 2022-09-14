@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de movimientos</title>
+</head>
+<body>
+<h1>Lista de movimientos</h1>
+<a th:href="@{/}">Home</a>
+<br>
+<a th:href="@{/movimientos/modificar}">Nuevo Movimiento</a>
+<br>
+<table border="1">
+    <tr>
+        <th>Fecha</th>
+        <th>Empresa
+        <th>Concepto</th>
+        <th>Producto</th>
+        <th>Monto</th>
+        <th>Empleado</th>
+    </tr>
+    <tr th:each="movimiento: ${movimientos}">
+    <td th:text="${movimiento.fecha}"></td>
+    <td th:text="${movimiento.empresa}"></td>
+    <td th:text="${movimiento.concepto}"></td>
+    <td th:text="${movimiento.producto}"></td>
+    <td th:text="${movimiento.monto}"></td>
+    <td th:text="${movimiento.empleado}"></td>
+    </tr>
+</table>
+</body>
+</html>
