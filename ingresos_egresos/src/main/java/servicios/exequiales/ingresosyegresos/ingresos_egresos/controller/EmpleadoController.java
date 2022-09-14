@@ -14,10 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
-<<<<<<< HEAD
 
-=======
->>>>>>> eef322105140750164ee6caaff58497e39ae60e9
 public class EmpleadoController {
 
     @Autowired
