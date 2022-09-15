@@ -30,8 +30,8 @@ import java.util.Optional;
 
      @Override
      public MovimientoDinero creatMovimiento(MovimientoDinero movimiento)  {
-         MovimientoDinero newmovimiento = movimientoRepository.save(movimiento);
-         return newmovimiento;
+
+         return movimientoRepository.save(movimiento);
      }
 
      @Override

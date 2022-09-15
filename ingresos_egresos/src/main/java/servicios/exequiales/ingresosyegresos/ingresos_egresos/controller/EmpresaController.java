@@ -3,8 +3,7 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 
@@ -31,7 +30,6 @@ public class EmpresaController {
 
 
     @GetMapping("/empresas/modificar")
-
     public String creatEmpresa(Model modelo) {
         LOG.log(Level.INFO, "createEmpresa");
         Empresa empresa = new Empresa();
@@ -47,12 +45,23 @@ public class EmpresaController {
         empresa = empresaService.createEmpresa(empresa);
         return "redirect:/empresas/list";
     }
-    @GetMapping("/empresas/editar/{id}")
-    public String editEmpresa(Empresa empresa, Model modelo){
+    @RequestMapping(value = "/empresas/editar/{id}", method = RequestMethod.GET)
+    public String editEmpresa(@PathVariable("id") long id, Model modelo){
         LOG.log(Level.INFO, "editEmpresa");
+        System.out.println(id);
+        Empresa empresa = empresaService.findById(id);
+        System.out.println(empresa.toString());
+        modelo.addAttribute("empresa", empresa);
         return"empresas/modificar";
 
     }
+    @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
+    public String deleteEmpresa(@PathVariable("id") long id, Model modelo) {
+        LOG.log(Level.INFO, "deleteEmpresa");
+        empresaService.deleteEmpresa(id);
+        return "redirect:/empresas/listar";
+    }
+
 
 
 }

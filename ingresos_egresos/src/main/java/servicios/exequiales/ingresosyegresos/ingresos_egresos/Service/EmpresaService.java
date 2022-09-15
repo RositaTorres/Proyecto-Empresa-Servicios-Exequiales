@@ -14,7 +14,7 @@ public class EmpresaService implements IEmpresaService {
     @Autowired
     private IEmpresaRepository empresaRepository;
     @Override
-    public Empresa findById(int id) {
+    public Empresa findById(long id) {
         Optional<Empresa> empresa = empresaRepository.findById((long) id);
         return empresa.get();
     }
@@ -36,7 +36,7 @@ public class EmpresaService implements IEmpresaService {
     }
 
     @Override
-    public void deleteEmpresa(int id) {
+    public void deleteEmpresa(long id) {
         empresaRepository.deleteById((long)id);
     }
 

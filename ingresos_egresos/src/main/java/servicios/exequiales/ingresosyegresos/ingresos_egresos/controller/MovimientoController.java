@@ -57,7 +57,7 @@ public class MovimientoController {
         return "movimientos/modificar";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/movimientos/guardar")
     public String guardarMovimiento(MovimientoDinero movimientoDinero) {
         LOG.log(Level.INFO, "guardarMovimiento");
         movimientoDinero = movimientoDineroService.creatMovimiento(movimientoDinero);
