@@ -8,7 +8,7 @@
 <h1>Lista de empresas</h1>
 <a th:href="@{/}">Home</a>
 <br>
-<a th:href="@{/empresas/modificar}">Nueva Empresa</a>
+<a th:href="@{/empresas/crear}">Nueva Empresa</a>
 <br>
 <table border="1">
     <tr>
@@ -19,7 +19,7 @@
         <th>Editar</th>
         <th>Eliminar</th>
     </tr>
-    <tr th:each="empresa : ${empresa}" th:if="${empresa.estado}">
+    <tr th:each="empresa : ${empresas}" th:if="${empresa.estado}">
         <td th:text="${empresa.nit}"></td>
         <td th:text="${empresa.nombre_empresa}"></td>
         <td th:text="${empresa.direccion}"></td>

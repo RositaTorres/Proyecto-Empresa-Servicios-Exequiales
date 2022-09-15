@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1>Nuevo Movimiento de Dinero</h1>
-  <form th:action="@{/guardar}" method="post" th:object="${movimiento}">
+  <form th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
     <label for="empresa"> Empresa </label>
     <select th:field="*{empresa.idEmpresa}" name="empresa">
       <option value="0" selected> Seleccione Empresa</option>

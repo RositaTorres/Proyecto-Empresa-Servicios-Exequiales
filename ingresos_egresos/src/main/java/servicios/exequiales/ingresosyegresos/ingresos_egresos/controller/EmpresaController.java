@@ -24,13 +24,12 @@ public class EmpresaController {
         List<Empresa> empresas = empresaService.findAll();
         for (Empresa empresa : empresas)
             System.out.println(empresa.toString());
-        model.addAttribute("empresas", empresas);
+        model.addAttribute("empresa", empresas);
         return "empresas/list";
     }
 
-
-    @GetMapping("/empresas/modificar")
-    public String creatEmpresa(Model modelo) {
+    @GetMapping("/empresas/crear")
+    public String createEmpresa(Model modelo) {
         LOG.log(Level.INFO, "createEmpresa");
         Empresa empresa = new Empresa();
         modelo.addAttribute("empresa", empresa);
@@ -45,23 +44,22 @@ public class EmpresaController {
         empresa = empresaService.createEmpresa(empresa);
         return "redirect:/empresas/list";
     }
+
     @RequestMapping(value = "/empresas/editar/{id}", method = RequestMethod.GET)
-    public String editEmpresa(@PathVariable("id") long id, Model modelo){
+    public String editEmpresa(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "editEmpresa");
         System.out.println(id);
         Empresa empresa = empresaService.findById(id);
         System.out.println(empresa.toString());
         modelo.addAttribute("empresa", empresa);
-        return"empresas/modificar";
-
+        return "empresas/modificar";
     }
+
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
     public String deleteEmpresa(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deleteEmpresa");
         empresaService.deleteEmpresa(id);
         return "redirect:/empresas/listar";
     }
-
-
 
 }

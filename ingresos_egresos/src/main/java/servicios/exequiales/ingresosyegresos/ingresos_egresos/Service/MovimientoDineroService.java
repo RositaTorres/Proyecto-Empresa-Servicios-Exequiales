@@ -30,7 +30,6 @@ import java.util.Optional;
 
      @Override
      public MovimientoDinero creatMovimiento(MovimientoDinero movimiento)  {
-
          return movimientoRepository.save(movimiento);
      }
 
