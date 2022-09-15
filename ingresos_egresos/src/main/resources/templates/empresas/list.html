@@ -21,11 +21,11 @@
     </tr>
     <tr th:each="empresa : ${empresas}" th:if="${empresa.estado}">
         <td th:text="${empresa.nit}"></td>
-        <td th:text="${empresa.nombre_empresa}"></td>
+        <td th:text="${empresa.nombreEmpresa}"></td>
         <td th:text="${empresa.direccion}"></td>
         <td th:text="${empresa.telefono}"></td>
-        <td><a th:href="@{/editar/} + ${empresa.idEmpresa}" th:text="Editar"></a></td>
-        <td><a th:href="@{/eliminar/} + ${empresa.idEmpresa}" th:text="Eliminar"></a></td>
+        <td><a th:href="@{/empresas/editar/} + ${empresa.idEmpresa}" th:text="Editar"></a></td>
+        <td><a th:href="@{/empresas/eliminar/} + ${empresa.idEmpresa}" th:text="Eliminar"></a></td>
     </tr>
 
 </table>
