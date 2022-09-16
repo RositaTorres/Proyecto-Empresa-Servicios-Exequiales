@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+</head>
+<body>
+<h1>Datos de Productos</h1>
+<form th:action="@{/productos/guardar}" method="post" th:object="${producto}">
+    <input type="hidden" name="idProducto" th:field="*{idProducto}">
+    <label for="nombreProducto">Nombre </label>
+    <input type="text" name="nombre" th:field="*{nombreProducto}"/>
+    <br>
+    <label for="valorProducto">Valor</label>
+    <input type="text" name="valorProducto" th:field="*{valorProducto}"/>
+    <br>
+    <input type="submit" name="guardar" value="Guardar">
+
+</form>
+</body>
+</html>
