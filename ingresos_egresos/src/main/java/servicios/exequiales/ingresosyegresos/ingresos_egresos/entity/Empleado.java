@@ -29,6 +29,7 @@ public class Empleado {
     private Rol rol;
     @Column(name = "area_empleado")
     private AreaEmpleado areaEmpleado;
+
     @Column(name = "estado")
     private boolean estado;
 

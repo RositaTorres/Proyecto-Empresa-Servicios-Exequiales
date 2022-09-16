@@ -10,6 +10,6 @@ public interface IEmpleadoService {
     public List<Empleado> findAll();
     public Empleado createEmpleado(Empleado empleado);
     public Empleado updateEmpleado(int id, Empleado empleado);
-    public void deletEmpleado(int id);
+    public void deletEmpleado(long id);
 
 }

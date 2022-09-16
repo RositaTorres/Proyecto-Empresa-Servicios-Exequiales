@@ -39,8 +39,8 @@ public class EmpleadoService implements IEmpleadoService {
     }
 
     @Override
-    public void deletEmpleado(int id) {
-        empleadoRepository.deleteById((long)id);
+    public void deletEmpleado(long id) {
+        empleadoRepository.deleteById(id);
     }
 
 

@@ -34,6 +34,15 @@
         ></option>
     </select>
     <br>
+    <label for="areaEmpleado"> Area del Empleado </label>
+    <select th:field="*{areaEmpleado}" name="areaEmpleado">
+        <option  value="0" selected>Seleccione el area del empleado</option>
+        <option th:each="areaEmpleado : ${T(servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.AreaEmpleado).values()}"
+                th:value="${areaEmpleado}"
+                th:text="${areaEmpleado}"
+        ></option>
+    </select>
+    <br>
     <label for="direccion">Dirección </label>
     <input type="text" name="direccion" th:field="*{direccion}"/>
     <br>

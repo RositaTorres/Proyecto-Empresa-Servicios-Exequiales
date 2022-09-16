@@ -17,6 +17,8 @@
         <th>Direccion</th>
         <th>Telefono</th>
         <th>Correo</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
     </tr>
     <tr th:each="empleado : ${empleados}">
         <td th:text="${empleado.documento}"></td>
@@ -24,6 +26,8 @@
         <td th:text="${empleado.direcion}"></td>
         <td th:text="${empleado.telefono}"></td>
         <td th:text="${empleado.correo}"></td>
+        <td><a th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" th:text="Editar"></a></td>
+        <td><a th:href="@{/empleados/eliminar/} + ${empleado.idEmpleado}" th:text="Eliminar"></a></td>
 
     </tr>
 </table>

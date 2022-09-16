@@ -3,8 +3,7 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Rol;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.*;
@@ -23,7 +22,7 @@ public class EmpleadoController {
     @Autowired
     private IRolService rolService;
 
-    private final Logger LOG = Logger.getLogger("" +EmpleadoController.class);
+    private final Logger LOG = Logger.getLogger("" + EmpleadoController.class);
 
     @GetMapping("/empleados/list")
     public String getListEmpleados(Model model) {
@@ -49,11 +48,18 @@ public class EmpleadoController {
     }
 
     @PostMapping("/empleados/guardar")
-    public String guardarEmpleado(Empleado user){
+    public String guardarEmpleado(Empleado user) {
         LOG.log(Level.INFO, "guardarEmpleado");
         user.setEstado(true);
         System.out.println(user.toString());
         user = empleadoService.createEmpleado(user);
+        return "redirect:/empleados/list";
+    }
+
+    @RequestMapping(value = "/empleados/eliminar/{id}", method = RequestMethod.GET)
+    public String deletEmpleado(@PathVariable("id") long id, Model modelo) {
+        LOG.log(Level.INFO, "deletEmpleado");
+        empleadoService.deletEmpleado(id);
         return "redirect:/empleados/list";
     }
 }
