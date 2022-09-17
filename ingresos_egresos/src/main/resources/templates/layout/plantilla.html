@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Plantilla</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+
 </head>
 <body>
-  <header th:fragment="header">
+  <header class="container" th:fragment="header">
     <h2>Sistema de Gestión de Ingresos y Gastos</h2>
   </header>
 
@@ -13,5 +16,7 @@
       <br><br>
       <p> Derechos reservados @copyright <a href="http://www.google.com.co" target = "_blank">Sitio Web</a></p>
   </footer>
+  <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+  <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

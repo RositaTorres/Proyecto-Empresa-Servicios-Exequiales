@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
 
     <title>Sistema de Gestión de Ingresos y Gastos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+
+
 </head>
 <body>
-<header th:replace="layout/plantilla :: header"></header>
+<header class = "container"th:replace="layout/plantilla :: header"></header>
 <h4>Menu</h4>
 <p th:text="${mensaje}"> lista </p>
 <div class="container text-center">
@@ -36,9 +38,9 @@
     <!--    <br>-->
     <!--    <a th:href="@{/movimientos/list}">Sistema de gestión de Movimientos</a>-->
     <!--    <br>-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-            crossorigin="anonymous"></script>
+
     <footer th:replace="layout/plantilla :: footer"></footer>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>
