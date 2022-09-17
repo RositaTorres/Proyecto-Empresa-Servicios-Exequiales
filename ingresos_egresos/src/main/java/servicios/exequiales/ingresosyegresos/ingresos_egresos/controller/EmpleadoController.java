@@ -60,9 +60,25 @@ public class EmpleadoController {
         empleado.setEstado(true);
         System.out.println(empleado.toString());
         empleado = empleadoService.createEmpleado(empleado);
+
         return "redirect:/empleados/list";
     }
 
+    @RequestMapping(value = "/empleados/editar/{id}", method = RequestMethod.GET)
+    public String editEmpleado(@PathVariable("id") long id, Model modelo) {
+        LOG.log(Level.INFO, "editEmpleado");
+        System.out.println(id);
+        Empleado empleado = empleadoService.findById(id);
+        System.out.println(empleado.toString());
+        modelo.addAttribute("empleado", empleado);
+        //Roles
+        List<Rol> roles = rolService.findAll();
+        modelo.addAttribute("roles", roles);
+        //Empresa
+        List<Empresa> empresas = empresaService.findAll();
+        modelo.addAttribute("empresas", empresas);
+        return "empleados/modificar";
+    }
     @RequestMapping(value = "/empleados/eliminar/{id}", method = RequestMethod.GET)
     public String deletEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deletEmpleado");

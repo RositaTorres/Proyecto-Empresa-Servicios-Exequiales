@@ -7,7 +7,7 @@
 <body>
 <h1>Datos de empleado</h1>
 <form th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
-    <label for="nombre">Nombre </label>
+    <label for="nombre">Nombre y Apellido </label>
     <input type="text" name="nombre" th:field="*{nombre}"/>
     <br>
     <label for="correo">Correo </label>
@@ -46,7 +46,7 @@
     <label for="direccion">Dirección </label>
     <input type="text" name="direccion" th:field="*{direccion}"/>
     <br>
-    <label for="telefono">Telefono </label>
+    <label for="telefono">Telefono o Celular </label>
     <input type="text" name="telefono" th:field="*{telefono}"/>
     <br>
     <input type="submit" name="guardar" value="Guardar">

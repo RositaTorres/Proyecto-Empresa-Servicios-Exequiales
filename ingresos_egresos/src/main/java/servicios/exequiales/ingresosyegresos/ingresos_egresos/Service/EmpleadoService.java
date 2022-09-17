@@ -16,8 +16,8 @@ public class EmpleadoService implements IEmpleadoService {
     private IEmpleadoRepository empleadoRepository;
 
     @Override
-    public Empleado findById(int id) {
-        Optional<Empleado> empleado = empleadoRepository.findById((long) id);
+    public Empleado findById(long id) {
+        Optional<Empleado> empleado = empleadoRepository.findById(id);
         return empleado.get();
     }
 
