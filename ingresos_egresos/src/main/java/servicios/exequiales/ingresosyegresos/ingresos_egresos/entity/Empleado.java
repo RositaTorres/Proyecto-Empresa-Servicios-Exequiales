@@ -30,6 +30,9 @@ public class Empleado {
     @Column(name = "area_empleado")
     private AreaEmpleado areaEmpleado;
 
+    @Column(name = "clave", nullable = false)
+    private String clave;
+
     @Column(name = "estado")
     private boolean estado;
 
@@ -114,18 +117,26 @@ public class Empleado {
         this.areaEmpleado = areaEmpleado;
     }
 
-    @Override
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+      @Override
     public String toString() {
         return "Empleado{" +
                 "idEmpleado=" + idEmpleado +
                 ", documento='" + documento + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", empresa='" + empresa + '\'' +
+                ", empresa=" + empresa +
                 ", correo='" + correo + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", rol=" + rol +
                 ", areaEmpleado=" + areaEmpleado +
+                ", clave='" + clave + '\'' +
                 ", estado=" + estado +
                 '}';
     }
