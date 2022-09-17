@@ -3,12 +3,15 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Rol;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,17 +57,20 @@ public class EmpleadoController {
     }
 
 
-    @PostMapping("/empleados/guardar")
-    public String guardarEmpleado(Empleado empleado) {
+    @PostMapping("/guardar")
+    public String guardarEmpleado(@Valid Empleado empleado, BindingResult error, Model modelo) {
         LOG.log(Level.INFO, "guardarEmpleado");
+        for(ObjectError e : error.getAllErrors())
+            System.out.println(e.toString());
+        if(error.hasErrors()) {
+            return "empleados/modificar";
+        }
         empleado.setEstado(true);
-        System.out.println(empleado.toString());
         empleado = empleadoService.createEmpleado(empleado);
-
-        return "redirect:/empleados/list";
+        return "redirect:/empleados/listar";
     }
 
-    @RequestMapping(value = "/empleados/editar/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
     public String editEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "editEmpleado");
         System.out.println(id);
@@ -79,10 +85,13 @@ public class EmpleadoController {
         modelo.addAttribute("empresas", empresas);
         return "empleados/modificar";
     }
-    @RequestMapping(value = "/empleados/eliminar/{id}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
     public String deletEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deletEmpleado");
         empleadoService.deletEmpleado(id);
         return "redirect:/empleados/list";
     }
+
+
 }

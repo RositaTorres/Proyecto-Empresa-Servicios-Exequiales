@@ -1,6 +1,8 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "empleados")
@@ -11,25 +13,33 @@ public class Empleado {
     @Column(name = "id_empleado")
     private long idEmpleado; // variable de tipo objeto
 
+    @javax.validation.constraints.NotEmpty
     @Column(name = "documento", unique = true)
     private String documento;
+    @javax.validation.constraints.NotEmpty
     @Column(name = "nombre")
     private String nombre;
     @ManyToOne
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
+    @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?" ,message = "Debe ser un correo electrónico válido")
     @Column(name = "correo", nullable = false)
     private String correo;
+    @javax.validation.constraints.NotEmpty
     @Column(name = "direccion", nullable = false)
     private String direccion;
+    @javax.validation.constraints.NotEmpty
     @Column(name = "telefono", nullable = false)
     private String telefono;
-    @ManyToOne
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "id_rol")
     private Rol rol;
+    @NotNull
     @Column(name = "area_empleado")
     private AreaEmpleado areaEmpleado;
 
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$" , message = "La contraseña debe contener minimo 8 caracteres, máximo 15, una letra mayúscula, una letra minuscula, un número, un caracter especial y sin espacios en blanco")
     @Column(name = "clave", nullable = false)
     private String clave;
 
