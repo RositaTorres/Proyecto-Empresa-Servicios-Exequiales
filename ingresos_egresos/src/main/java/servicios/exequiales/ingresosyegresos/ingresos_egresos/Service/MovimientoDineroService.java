@@ -35,8 +35,7 @@ import java.util.Optional;
 
      @Override
      public MovimientoDinero updateMovimiento(int id, MovimientoDinero movimiento)  {
-         MovimientoDinero putMovimientoDinero = movimientoRepository.save(movimiento);
-         return putMovimientoDinero;
+         return movimientoRepository.save(movimiento);
      }
      @Override
      public void deletMovimiento(int id)  {

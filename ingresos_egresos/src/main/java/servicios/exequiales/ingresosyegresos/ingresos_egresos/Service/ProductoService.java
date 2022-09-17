@@ -28,14 +28,12 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Producto creatProducto(Producto producto) {
-        Producto newproducto = productoRepository.save(producto);
-        return newproducto;
+        return productoRepository.save(producto);
     }
 
     @Override
     public Producto updateProducto(int id, Producto producto) {
-        Producto putProducto = productoRepository.save(producto);
-        return putProducto;
+        return productoRepository.save(producto);
     }
 
     @Override

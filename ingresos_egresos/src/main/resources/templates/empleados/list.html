@@ -23,7 +23,7 @@
     <tr th:each="empleado : ${empleados}">
         <td th:text="${empleado.documento}"></td>
         <td th:text="${empleado.nombre}"></td>
-        <td th:text="${empleado.direcion}"></td>
+        <td th:text="${empleado.direccion}"></td>
         <td th:text="${empleado.telefono}"></td>
         <td th:text="${empleado.correo}"></td>
         <td><a th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" th:text="Editar"></a></td>

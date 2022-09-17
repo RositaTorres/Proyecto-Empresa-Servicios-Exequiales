@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 
 import java.util.List;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado;
+import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Rol;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.*;
 
@@ -21,6 +22,9 @@ public class EmpleadoController {
 
     @Autowired
     private IRolService rolService;
+
+    @Autowired
+    private IEmpresaService empresaService;
 
     private final Logger LOG = Logger.getLogger("" + EmpleadoController.class);
 
@@ -44,15 +48,18 @@ public class EmpleadoController {
         List<Rol> roles = rolService.findAll();
         modelo.addAttribute("roles", roles);
         //Empresa
+        List<Empresa> empresas = empresaService.findAll();
+        modelo.addAttribute("empresas", empresas);
         return "empleados/modificar";
     }
 
+
     @PostMapping("/empleados/guardar")
-    public String guardarEmpleado(Empleado user) {
+    public String guardarEmpleado(Empleado empleado) {
         LOG.log(Level.INFO, "guardarEmpleado");
-        user.setEstado(true);
-        System.out.println(user.toString());
-        user = empleadoService.createEmpleado(user);
+        empleado.setEstado(true);
+        System.out.println(empleado.toString());
+        empleado = empleadoService.createEmpleado(empleado);
         return "redirect:/empleados/list";
     }
 

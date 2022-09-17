@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IMovimientoDineroService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IProductoService;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.MovimientoDinero;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Producto;
 
 import java.util.List;
@@ -27,13 +26,13 @@ public class ProductoController {
     public String getListProductos(Model model) {
         LOG.log(Level.INFO, "getListProductos");
         List<Producto> productos = productoService.findAll();
-        for (Producto producto : productos)
-            System.out.println(producto.toString());
+        for (Producto pro : productos)
+            System.out.println(pro.toString());
         model.addAttribute("productos", productos);
         return "/productos/list";
     }
 
-    @GetMapping("/productos/modificar")
+    @GetMapping("/productos/crear")
     public String creatProducto(Model modelo) {
         LOG.log(Level.INFO, "creatProducto");
         Producto productos = new Producto();
