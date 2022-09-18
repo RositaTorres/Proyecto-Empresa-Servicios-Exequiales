@@ -3,16 +3,16 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpleadoService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IMovimientoDineroService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IProductoService;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.MovimientoDinero;
-import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Producto;
+import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,23 +44,54 @@ public class MovimientoController {
     }
 
     @GetMapping("/movimientos/modificar")
-    public String createMovimiento(Model modelo) {
-        LOG.log(Level.INFO, "createMovimiento");
+    public String creatMovimiento(Model modelo) {
+        LOG.log(Level.INFO, "creatMovimiento");
         MovimientoDinero movimiento = new MovimientoDinero();
         modelo.addAttribute("movimiento", movimiento);
         //Producto
-        //List<Producto> productos = productoService.findAll();
-        //modelo.addAttribute("productos", productos);
+        List<Producto> productos = productoService.findAll();
+        modelo.addAttribute("productos", productos);
         //Empresa
         List<Empresa> empresas = empresaService.findAll();
         modelo.addAttribute("empresas", empresas);
-        return "movimientos/modificar";
+        //Empleado
+        Empleado empleado = new Empleado();
+        modelo.addAttribute("empleado", empleado);
+        return "/movimientos/modificar";
     }
 
     @PostMapping("/movimientos/guardar")
-    public String guardarMovimiento(MovimientoDinero movimientoDinero) {
+    public String guardarMovimiento(@Valid MovimientoDinero movimientoDinero, BindingResult error, Model modelo) {
         LOG.log(Level.INFO, "guardarMovimiento");
+        for(ObjectError e : error.getAllErrors())
+            System.out.println(e.toString());
+        if(error.hasErrors()) {
+            return "/movimientos/modificar";
+        }
         movimientoDinero = movimientoDineroService.creatMovimiento(movimientoDinero);
+        return "redirect:/movimientos/listar";
+    }
+
+    @RequestMapping(value = "/movimientos/editar/{id}", method = RequestMethod.GET)
+    public String editMovimiento(@PathVariable("id") long id, Model modelo) {
+        LOG.log(Level.INFO, "editMovimiento");
+        System.out.println(id);
+        MovimientoDinero movimientoDinero = movimientoDineroService.findById(id);
+        System.out.println(movimientoDinero.toString());
+        modelo.addAttribute("movimiento", movimientoDinero);
+        //Producto
+        List<Producto> productos = productoService.findAll();
+        modelo.addAttribute("productos", productos);
+        //Empresa
+        List<Empresa> empresas = empresaService.findAll();
+        modelo.addAttribute("empresas", empresas);
+        return "/movimientos/modificar";
+    }
+
+    @RequestMapping(value = "/movimientos/eliminar/{id}", method = RequestMethod.GET)
+    public String deletMovimiento(@PathVariable("id") long id, Model modelo) {
+        LOG.log(Level.INFO, "deletMovimiento");
+        movimientoDineroService.deletMovimiento(id);
         return "redirect:/movimientos/list";
     }
 

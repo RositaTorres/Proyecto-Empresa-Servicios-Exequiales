@@ -17,8 +17,8 @@ import java.util.Optional;
 
 
      @Override
-     public MovimientoDinero findById(int id) {
-         Optional<MovimientoDinero> movimientoDinero = movimientoRepository.findById((long) id);
+     public MovimientoDinero findById(long id) {
+         Optional<MovimientoDinero> movimientoDinero = movimientoRepository.findById(id);
          return movimientoDinero.get();
      }
 
@@ -38,7 +38,7 @@ import java.util.Optional;
          return movimientoRepository.save(movimiento);
      }
      @Override
-     public void deletMovimiento(int id)  {
-         movimientoRepository.deleteById((long)id);
+     public void deletMovimiento(long id)  {
+         movimientoRepository.deleteById(id);
      }
  }

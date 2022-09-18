@@ -2,6 +2,7 @@
 
 
  import javax.persistence.*;
+ import java.util.Date;
  import java.util.List;
 
  @Entity
@@ -9,11 +10,11 @@
  public class MovimientoDinero {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "id_movimiento", nullable = false)
+     @Column(name = "id_movimiento")
      private long idMovimientoDinero;
-     @Column(name = "monto", nullable = false)
+     @Column(name = "monto")
      private float montoMovimiento;
-     @Column(name = "concepto", nullable = false)
+     @Column(name = "concepto")
      private String conceptoMovimiento;
      @ManyToOne
      @JoinColumn(name = "id_empleado")
@@ -27,14 +28,18 @@
      @JoinTable (name= "movimiento_producto")
      private List<Producto> productos;
 
+     @Column (name= "fecha")
+     private Date fecha;
 
-     public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado empleado, servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa empresa, List<Producto> productos) {
+
+     public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, List<Producto> productos, Date fecha) {
          this.idMovimientoDinero = idMovimientoDinero;
          this.montoMovimiento = montoMovimiento;
          this.conceptoMovimiento = conceptoMovimiento;
          this.empleado = empleado;
          this.empresa = empresa;
          this.productos = productos;
+         this.fecha = fecha;
      }
 
      public MovimientoDinero() {
@@ -89,6 +94,14 @@
          this.productos = productos;
      }
 
+     public Date getFecha() {
+         return fecha;
+     }
+
+     public void setFecha(Date fecha) {
+         this.fecha = fecha;
+     }
+
      @Override
      public String toString() {
          return "MovimientoDinero{" +
@@ -98,6 +111,7 @@
                  ", empleado=" + empleado +
                  ", empresa=" + empresa +
                  ", productos=" + productos +
+                 ", fecha=" + fecha +
                  '}';
      }
  }

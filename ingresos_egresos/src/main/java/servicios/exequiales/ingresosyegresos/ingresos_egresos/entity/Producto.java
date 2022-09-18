@@ -3,6 +3,7 @@
  import javax.persistence.*;
  import java.util.List;
 
+
  @Entity
  @Table(name="productos")
  public class Producto {
@@ -10,11 +11,11 @@
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name="id_producto",nullable = false)
      private long idProducto;
-     @Column(name="nombre",nullable = false)
+     @Column(name="nombre")
      private String nombreProducto;
-     @Column(name="valor",nullable = false)
+     @Column(name="valor")
      private float valorProducto;
-     @Column(name="estado",nullable = false)
+     @Column(name="estado")
      private boolean estadoProducto;
 
      @ManyToMany (mappedBy ="productos")

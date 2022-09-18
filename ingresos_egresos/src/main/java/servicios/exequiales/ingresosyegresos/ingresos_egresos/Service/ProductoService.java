@@ -32,7 +32,7 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public Producto updateProducto(int id, Producto producto) {
+    public Producto updateProducto(long id, Producto producto) {
         return productoRepository.save(producto);
     }
 

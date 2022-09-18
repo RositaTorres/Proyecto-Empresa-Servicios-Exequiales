@@ -9,6 +9,6 @@
      public Producto findById(long id);
      public List<Producto> findAll();
      public Producto creatProducto(Producto producto);
-     public Producto updateProducto(int id, Producto producto);
+     public Producto updateProducto(long id, Producto producto);
      public void deletProducto(long id);
  }

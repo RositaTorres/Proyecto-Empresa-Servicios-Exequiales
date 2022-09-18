@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <title>Lista de movimientos</title>
 </head>
-<body>
-<h1>Lista de movimientos</h1>
-<a th:href="@{/}">Home</a>
-<br>
-<a th:href="@{/movimientos/modificar}">Nuevo Movimiento</a>
-<br>
-<table border="1">
+    <body>
+        <h1>Lista de movimientos</h1>
+        <a th:href="@{/}">Home</a>
+        <br>
+        <a th:href="@{/movimientos/modificar}">Nuevo Movimiento</a>
+        <br>
+        <table border="1">
     <tr>
-        <th>Fecha</th>
-        <th>Empresa
-        <th>Concepto</th>
-        <th>Producto</th>
-        <th>Monto</th>
-        <th>Empleado</th>
+       <th>Fecha</th>
+       <th>Empresa</th>
+       <th>Concepto</th>
+       <th>Producto</th>
+       <th>Monto</th>
+       <th>Empleado</th>
     </tr>
     <tr th:each="movimiento: ${movimientos}">
-    <td th:text="${movimiento.fecha}"></td>
-    <td th:text="${movimiento.empresa}"></td>
-    <td th:text="${movimiento.concepto}"></td>
-    <td th:text="${movimiento.producto}"></td>
-    <td th:text="${movimiento.monto}"></td>
-    <td th:text="${movimiento.empleado}"></td>
+        <td th:text="${movimiento.fecha}"></td>
+        <td th:text="${movimiento.empresa}"></td>
+        <td th:text="${movimiento.conceptoMovimiento}"></td>
+        <td th:text="${movimiento.productos}"></td>
+        <td th:text="${movimiento.montoMovimiento}"></td>
+        <td th:text="${movimiento.empleado}"></td>
+        <td><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" th:text="Editar"></a></td>
+        <td><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" th:text="Eliminar"></a></td>
     </tr>
 </table>
 </body>
