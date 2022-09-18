@@ -49,8 +49,8 @@ public class MovimientoController {
         MovimientoDinero movimiento = new MovimientoDinero();
         modelo.addAttribute("movimiento", movimiento);
         //Producto
-        //List<Producto> productos = productoService.findAll();
-        //modelo.addAttribute("productos", productos);
+        List<Producto> productos = productoService.findAll();
+        modelo.addAttribute("productos", productos);
         //Empresa
         List<Empresa> empresas = empresaService.findAll();
         modelo.addAttribute("empresas", empresas);

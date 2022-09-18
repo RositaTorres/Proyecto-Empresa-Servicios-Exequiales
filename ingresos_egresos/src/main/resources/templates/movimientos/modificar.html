@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaft.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Nuevo Movimiento de Dinero</title>
+    <meta charset="UTF-8">
+    <title>Nuevo Movimiento de Dinero</title>
 </head>
 <body>
-  <h1>Nuevo Movimiento de Dinero</h1>
-  <form th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
+<h1>Nuevo Movimiento de Dinero</h1>
+<form th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
     <label for="empresa"> Empresa </label>
     <select th:field="*{empresa.idEmpresa}" name="empresa">
-      <option value="0" selected> Seleccione Empresa</option>
-      <option th:each="empresa: ${empresas}"
-              th:value="${empresa.idEmpresa}"
-              th:text="${empresa.nombreEmpresa}">
-      </option>
+        <option value="0" selected> Seleccione Empresa</option>
+        <option th:each="empresa: ${empresas}"
+                th:value="${empresa.idEmpresa}"
+                th:text="${empresa.nombreEmpresa}">
+        </option>
     </select>
     <br>
     <label for="concepto">Concepto</label>
     <input type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
     <br>
     <label for="producto">Producto </label>
-    <!--<select th:field="*{producto.idProducto}" name="producto">
-      //<option value="0" selected> Seleccione producto</option>
-      <option th:each="producto: ${productos}"
-              th:value="${producto.idProducto}"
-              th:text="${producto.nombre}">
-      </option>
-    </select>-->
+    <select th:field="*{producto.idProducto}" name="producto">
+        <option value="0" selected> Seleccione Producto</option>
+        <option th:each="producto: ${productos}"
+                th:value="${producto.idProducto}"
+                th:text="${producto.nombreProducto}">
+        </option>
+    </select>
     <br>
     <label for="monto">Monto</label>
     <input type="text" name="monto" th:field="*{montoMovimiento}"/>
     <br>
     <input type="submit" name="guardar" value="Guardar">
-  </form>
+</form>
 </body>
 </html>
