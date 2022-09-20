@@ -27,7 +27,7 @@ public class Empleado {
     @javax.validation.constraints.NotEmpty
     @Column(name = "telefono", nullable = false)
     private String telefono;
-    //@NotNull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "id_rol")
     private Rol rol;

@@ -11,7 +11,7 @@
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name="id_producto",nullable = false)
      private long idProducto;
-//     @javax.validation.constraints.NotEmpty
+     @javax.validation.constraints.NotEmpty
      @Column(name="nombre",nullable = false)
      private String nombreProducto;
 
