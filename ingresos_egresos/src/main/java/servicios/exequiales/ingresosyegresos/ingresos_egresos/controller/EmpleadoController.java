@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
-
 public class EmpleadoController {
 
     @Autowired
@@ -57,7 +56,7 @@ public class EmpleadoController {
     }
 
 
-    @PostMapping("/guardar")
+    @PostMapping("/empleados/guardar")
     public String guardarEmpleado(@Valid Empleado empleado, BindingResult error, Model modelo) {
         LOG.log(Level.INFO, "guardarEmpleado");
         for(ObjectError e : error.getAllErrors())
@@ -67,10 +66,10 @@ public class EmpleadoController {
         }
         empleado.setEstado(true);
         empleado = empleadoService.createEmpleado(empleado);
-        return "redirect:/empleados/listar";
+        return "redirect:/empleados/list";
     }
 
-    @RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/empleados/editar/{id}", method = RequestMethod.GET)
     public String editEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "editEmpleado");
         System.out.println(id);
@@ -86,7 +85,7 @@ public class EmpleadoController {
         return "empleados/modificar";
     }
 
-    @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/empleados/eliminar/{id}", method = RequestMethod.GET)
     public String deletEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deletEmpleado");
         empleadoService.deletEmpleado(id);

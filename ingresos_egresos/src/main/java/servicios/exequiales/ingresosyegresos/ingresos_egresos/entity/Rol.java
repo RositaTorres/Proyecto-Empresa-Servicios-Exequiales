@@ -1,6 +1,4 @@
 package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
-
-
 import javax.persistence.*;
 
 

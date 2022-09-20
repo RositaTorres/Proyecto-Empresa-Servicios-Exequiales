@@ -1,8 +1,12 @@
  package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
 
+ import com.fasterxml.jackson.annotation.JsonFormat;
+ import org.springframework.format.annotation.DateTimeFormat;
+
  import javax.persistence.*;
- import java.util.List;
+ import java.util.Date;
+
 
  @Entity
  @Table(name="movimientos")
@@ -11,8 +15,10 @@
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name = "id_movimiento", nullable = false)
      private long idMovimientoDinero;
+
      @Column(name = "monto", nullable = false)
      private float montoMovimiento;
+//     @javax.validation.constraints.NotEmpty
      @Column(name = "concepto", nullable = false)
      private String conceptoMovimiento;
      @ManyToOne
@@ -23,25 +29,29 @@
      @JoinColumn(name = "id_empresa")
      private Empresa empresa;
 
-     @ManyToMany
-     @JoinTable (name= "movimiento_producto")
-     private List<Producto> productos;
+     @ManyToOne
+     @JoinColumn (name= "id_producto")
+     private Producto producto;
 
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+     @Column(name= "fecha",nullable = false)
+     private Date fecha;
 
-     public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empleado empleado, servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa empresa, List<Producto> productos) {
+     public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Producto producto, Date fecha) {
          this.idMovimientoDinero = idMovimientoDinero;
          this.montoMovimiento = montoMovimiento;
          this.conceptoMovimiento = conceptoMovimiento;
          this.empleado = empleado;
          this.empresa = empresa;
-         this.productos = productos;
+         this.producto = producto;
+         this.fecha = fecha;
      }
 
      public MovimientoDinero() {
-    }
 
+     }
 
-    public long getIdMovimientoDinero() {
+     public long getIdMovimientoDinero() {
          return idMovimientoDinero;
      }
 
@@ -81,12 +91,20 @@
          this.empresa = empresa;
     }
 
-     public List<Producto> getProductos() {
-         return productos;
+     public Producto getProducto() {
+         return producto;
      }
 
-     public void setProductos(List<Producto> productos) {
-         this.productos = productos;
+     public void setProducto(Producto producto) {
+         this.producto = producto;
+     }
+
+     public Date getFecha() {
+         return fecha;
+     }
+
+     public void setFecha(Date fecha) {
+         this.fecha = fecha;
      }
 
      @Override
@@ -97,7 +115,8 @@
                  ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
                  ", empleado=" + empleado +
                  ", empresa=" + empresa +
-                 ", productos=" + productos +
+                 ", producto=" + producto +
+                 ", fecha=" + fecha +
                  '}';
      }
  }

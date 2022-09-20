@@ -16,7 +16,7 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Producto findById(long id) {
-        Optional<Producto> producto = productoRepository.findById((long) id);
+        Optional<Producto> producto = productoRepository.findById((long)id);
         return producto.get();
     }
 
@@ -38,7 +38,7 @@ public class ProductoService implements IProductoService {
 
     @Override
     public void deletProducto(long id) {
-        productoRepository.deleteById((long) id);
+        productoRepository.deleteById((long)id);
     }
 
 }

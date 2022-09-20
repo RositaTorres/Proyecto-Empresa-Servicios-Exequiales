@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Datos de empleado</h1>
-<form id="customer-form" th:action="@{/guardar}" method="post" th:object="${empleado}">
+<form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
     <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}">
     <br>
     <label for="nombre">Nombre y Apellido </label>
@@ -23,7 +23,7 @@
     <br>
     <label for="rol">Rol </label>
     <select th:field="*{rol.idRol}" name="rol">
-        <option value="0" selected> Seleccione rol</option>
+        <option value="0" selected>Seleccione rol</option>
         <option th:each="rol: ${roles}"
                 th:value="${rol.idRol}"
                 th:text="${rol.descripcion}"
@@ -35,19 +35,9 @@
     <input type="text" name="documento" th:field="*{documento}"/>
     <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error cedula</span>
     <br>
-    <label for="empresa"> Empresa </label>
-    <select th:field="*{empresa.idEmpresa}" name="empresa">
-        <option value="0" selected> Seleccione Empresa</option>
-        <option th:each="empresa: ${empresas}"
-                th:value="${empresa.idEmpresa}"
-                th:text="${empresa.nombreEmpresa}"
-        ></option>
-    </select>
-    <span th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Error Empresa</span>
-    <br>
     <label for="areaEmpleado"> Area del Empleado </label>
     <select th:field="*{areaEmpleado}" name="areaEmpleado">
-        <option  value="0" selected>Seleccione el area del empleado</option>
+        <option value="" selected>Seleccione el area del empleado</option>
         <option th:each="areaEmpleado : ${T(servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.AreaEmpleado).values()}"
                 th:value="${areaEmpleado}"
                 th:text="${areaEmpleado}"

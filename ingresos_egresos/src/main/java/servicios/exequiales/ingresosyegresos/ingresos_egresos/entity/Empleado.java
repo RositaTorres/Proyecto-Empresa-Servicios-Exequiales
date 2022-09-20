@@ -2,7 +2,6 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "empleados")
@@ -10,18 +9,15 @@ public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empleado")
+    @Column(name = "id_empleado", nullable = false)
     private long idEmpleado; // variable de tipo objeto
 
     @javax.validation.constraints.NotEmpty
     @Column(name = "documento", unique = true)
     private String documento;
     @javax.validation.constraints.NotEmpty
-    @Column(name = "nombre")
+    @Column(name = "nombre",nullable = false)
     private String nombre;
-    @ManyToOne
-    @JoinColumn(name = "id_empresa")
-    private Empresa empresa;
     @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?" ,message = "Debe ser un correo electrónico válido")
     @Column(name = "correo", nullable = false)
     private String correo;
@@ -31,8 +27,8 @@ public class Empleado {
     @javax.validation.constraints.NotEmpty
     @Column(name = "telefono", nullable = false)
     private String telefono;
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    //@NotNull
+    @ManyToOne
     @JoinColumn(name = "id_rol")
     private Rol rol;
     @NotNull
@@ -69,14 +65,6 @@ public class Empleado {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
     }
 
     public String getCorreo() {
@@ -140,7 +128,6 @@ public class Empleado {
                 "idEmpleado=" + idEmpleado +
                 ", documento='" + documento + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", empresa=" + empresa +
                 ", correo='" + correo + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +

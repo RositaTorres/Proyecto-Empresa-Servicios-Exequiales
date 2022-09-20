@@ -5,31 +5,44 @@
     <title>Nuevo Movimiento de Dinero</title>
 </head>
 <body>
+
 <h1>Nuevo Movimiento de Dinero</h1>
-<form th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
-    <label for="empresa"> Empresa </label>
-    <select th:field="*{empresa.idEmpresa}" name="empresa">
-        <option value="0" selected> Seleccione Empresa</option>
+
+
+<form id="customer-form"  th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
+    <input type="hidden" name="idMovimientoDinero" th:field="*{idMovimientoDinero}">
+    <label for="fecha">Fecha</label>
+    <input type="date" name="fecha" th:field="*{fecha}"/>
+<!--    <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error fecha</span>-->
+    <br>
+    <label for="empresa">Empresa </label>
+     <select th:field="*{empresa.idEmpresa}" name="empresa">
+        <option value="0" selected>Seleccione empresa</option>
         <option th:each="empresa: ${empresas}"
                 th:value="${empresa.idEmpresa}"
                 th:text="${empresa.nombreEmpresa}">
         </option>
     </select>
+
+<!--    <span th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Error empresa</span>-->
     <br>
     <label for="concepto">Concepto</label>
     <input type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
+<!--    <span th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}">Error concepto</span>-->
     <br>
     <label for="producto">Producto </label>
     <select th:field="*{producto.idProducto}" name="producto">
-        <option value="0" selected> Seleccione Producto</option>
+        <option value="0" selected>Seleccione producto</option>
         <option th:each="producto: ${productos}"
                 th:value="${producto.idProducto}"
-                th:text="${producto.nombreProducto}">
-        </option>
+                th:text="${producto.nombreProducto}"
+        ></option>
     </select>
+<!--    <span th:if="${#fields.hasErrors('productos')}" th:errors="*{productos}">Error producto</span>-->
     <br>
     <label for="monto">Monto</label>
-    <input type="text" name="monto" th:field="*{montoMovimiento}"/>
+    <input type="number" name="monto" th:field="*{montoMovimiento}"/>
+<!--    <span th:if="${#fields.hasErrors('montoMovimiento')}" th:errors="*{montoMovimiento}">Error monto</span>-->
     <br>
     <input type="submit" name="guardar" value="Guardar">
 </form>

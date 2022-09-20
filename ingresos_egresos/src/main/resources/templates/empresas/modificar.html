@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Empresas</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
 </head>
 <body>
-    <h1>Datos de empresa</h1>
-    <form th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
+
+<h1>Datos de empresa</h1>
+
+<form th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
+    <div class="col-md-12">
         <input type="hidden" name="idEmpresa" th:field="*{idEmpresa}">
         <label for="nit">Nit </label>
         <input type="text" name="nit" th:field="*{nit}"/>
-        <br>
-        <label for="nombreEmpresa">Nombre </label>
+        <span th:if="${#fields.hasErrors('nit')}" th:errors="*{nit}">Error Nit</span>
+    </div>
+    <br>
+    <div class="col-md-12">
+        <label for="nombreEmpresa">Nombre Empresa </label>
         <input type="text" name="nombre" th:field="*{nombreEmpresa}"/>
-        <br>
+        <span th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}">Error Nombre</span>
+    </div>
+    <br>
+    <div class="col-md-12">
         <label for="direccion">Direccion </label>
         <input type="text" name="direccion" th:field="*{direccion}"/>
-        <br>
+        <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Direccion</span>
+    </div>
+    <br>
+    <div class="col-md-12">
         <label for="telefono">Telefono o Celular</label>
         <input type="text" name="telefono" th:field="*{telefono}"/>
-        <br>
-        <input type="submit" name="guardar" value="Guardar">
+        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
+    </div>
+    <br>
+    <input type="submit" name="guardar" value="Guardar">
 
-    </form>
-
+</form>
+<footer th:fragment="footer">
+    <br><br>
+    <p> Derechos reservados @copyright <a href="http://www.google.com.co" target="_blank">Sitio Web</a></p>
+</footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

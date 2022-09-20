@@ -3,10 +3,13 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.Service.IEmpresaService;
 import servicios.exequiales.ingresosyegresos.ingresos_egresos.entity.Empresa;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,10 +40,14 @@ public class EmpresaController {
     }
 
     @PostMapping("/empresas/guardar")
-    public String guardarEmpresa(Empresa empresa) {
+    public String guardarEmpresa(@Valid Empresa empresa, BindingResult error, Model modelo) {
         LOG.log(Level.INFO, "guardarEmpresa");
+        for(ObjectError e : error.getAllErrors())
+            System.out.println(e.toString());
+        if(error.hasErrors()) {
+            return "empresas/modificar";
+        }
         empresa.setEstado(true);
-        System.out.println(empresa.toString());
         empresa = empresaService.createEmpresa(empresa);
         return "redirect:/empresas/list";
     }
@@ -59,7 +66,7 @@ public class EmpresaController {
     public String deleteEmpresa(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deleteEmpresa");
         empresaService.deleteEmpresa(id);
-        return "redirect:/empresas/listar";
+        return "redirect:/empresas/list";
     }
 
 }

@@ -10,11 +10,21 @@
 
 </head>
 <body>
-<header class = "container"th:replace="layout/plantilla :: header"></header>
+<header class="container" th:replace="layout/plantilla :: header"></header>
 <h4>Menu</h4>
 <p th:text="${mensaje}"> lista </p>
+    <nav class="nav flex-column">
+        <a class="navbar-brand" href="#">
+            <img th:href="@{/templates/static/img/negocio.jpeg}" alt="" width="30" height="24">
+        </a>
+        <a class="nav-link active" aria-current="page" href="#">Ingresos y Egresos</a>
+        <a class="nav-link" href="#">Usuarios</a>
+        <a class="nav-link" href="#">Empresas</a>
+
+    </nav>
+</ul>
 <div class="container text-center">
-    <div class="row g-5">
+      <div class="row g-5">
         <div class="col-2">
             <div class="p-5 border bg-light"><a th:href="@{/empleados/list}">Sistema de Gestión de Usuarios</a></div>
         </div>
@@ -30,9 +40,9 @@
             </div>
         </div>
     </div>
-
-    <footer th:replace="layout/plantilla :: footer"></footer>
-    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
-    <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
+</div>
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>
