@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 
 </head>
 <body>
@@ -14,7 +18,7 @@
     <div class="col-sm-4 main-section">
         <div class="modal-content">
             <div class="col-12 logo-img">
-                <img src="img/logo.png">
+                <img th:src="@{/img/negocio.png}">
             </div>
             <h5 class="">Ingreso al Sistema</h5><br>
             <form action="" method="" class="col-12">
@@ -33,5 +37,7 @@
     </div>
 </div>
 
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

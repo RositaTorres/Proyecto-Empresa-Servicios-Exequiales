@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Productos</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-<h1>Lista de Productos</h1>
-<a th:href="@{/}">Home</a>
-<br>
-<a th:href="@{/productos/crear}">Nuevo Producto</a>
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/plantilla :: mainProductos"></section>
+
+<a th:href="@{/productos/crear}">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-secondary" type="button">Nuevo Producto</button>
+    </div>
 <br>
 <table border="1">
     <tr>
@@ -16,13 +22,15 @@
         <th>Editar</th>
         <th>Eliminar</th>
     </tr>
-    <tr th:each="producto : ${productos}"   >
+    <tr th:each="producto : ${productos}">
         <td th:text="${producto.nombreProducto}"></td>
         <td><a th:href="@{/productos/editar/} + ${producto.idProducto}" th:text="Editar"></a></td>
         <td><a th:href="@{/productos/eliminar/} + ${producto.idProducto}" th:text="Eliminar"></a></td>
     </tr>
 
 </table>
-
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

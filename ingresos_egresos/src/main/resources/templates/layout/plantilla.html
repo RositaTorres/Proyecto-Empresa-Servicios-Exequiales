@@ -1,20 +1,114 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <title>Plantilla</title>
+    <link rel="shortcut icon" th:href="@{/img/faviconempresa.png}">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
+
 
 </head>
 <body>
-<header class="container" th:fragment="header">
-    <h2>Sistema de Gestión de Ingresos y Gastos</h2>
+<header th:fragment="header">
+    <div class="container-fluid">
+        <div class="row">
+                <div class="row flex-nowrap">
+                    <div class="col-auto col-md-4 col-xl-2 px-sm-2 px-0 bg-light" style="width 400px">
+                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                            <img th:src="@{/img/negocio.png}"  width="80" height="80"></img>
+                            <br>
+                            <hr>
+
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                                id="menu">
+                                <li class="nav-item">
+                                    <a th:href="@{/}" class="nav-link active align-middle px-12" aria-current="page">
+                                        <i class="fa-solid fa-house"></i>
+                                        <span class="ms-2 d-none d-sm-inline">Inicio</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/movimientos/list}" class="nav-link align-middle px-0">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                        <span class="ms-2 d-none d-sm-inline">Ingresos y Egresos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/empleados/list}" class="nav-link align-middle px-0">
+                                        <i class="fa-solid fa-user"></i>
+                                        <span class="ms-2 d-none d-sm-inline">Usuarios</span></a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/empresas/list}" class="nav-link align-middle px-0">
+                                        <i class="fa-regular fa-building"></i>
+                                        <span class="ms-2 d-none d-sm-inline">Empresas</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/productos/list}" class="nav-link align-middle px-0">
+                                        <i class="fa-solid fa-store"></i>
+                                        <span class="ms-2 d-none d-sm-inline">Productos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a method="post" th:action="@{/logout}" class="nav-link align-middle px-0">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        <span class="ms-2 d-none d-sm-inline">Salir</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <div class="dropdown pb-4">
+                                <a href="#"
+                                   class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
+                                   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img th:src="@{/img/empresa.png}" width="40" height="40" class="rounded-circle">
+                                    <span class="d-none d-sm-inline mx-1">Bienvenido</span>
+                                    <span>usuario</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--            <div class="b-example-divider b-example-vr"></div>-->
+
+                    <!-- Contenido de la pagina -->
+                    <div class="col py-3">
+                        <div class="container text-center p-4 ">
+                            <h2>Sistema de Gestión de Ingresos y Gastos</h2>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
 </header>
 
-<footer th:fragment="footer">
-    <br><br>
-    <p> Derechos reservados @copyright <a href="http://www.google.com.co" target="_blank">Sitio Web</a></p>
+<section th:fragment="mainEmpresas" id="main-empresas" class="py-0 bg-white text-black">
+    <div class="container">
+        <div class="row">
+            <h1 class="col-md-6"><u>Empresas</u></h1>
+        </div>
+    </div>
+</section>
+<section th:fragment="mainProductos" id="main-productos" class="py-0 bg-white text-black">
+    <div class="container">
+        <div class="row">
+            <h1 class="col-md-6"><u>Productos</u></h1>
+        </div>
+    </div>
+</section>
+
+<footer th:fragment="footer" class="bg-light p-5 mt-5 footer-down">
+    <div class="container">
+        <div class="col">
+            <p class="lead text-center">
+            <span>Derechos reservados @copy; <a href="https://www.misiontic2022.gov.co/portal/" target="_blank">Misión TIC</a></span>
+            </p>
+        </div>
+    </div>
 </footer>
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
