@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <title>Plantilla</title>
@@ -53,20 +56,22 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a method="post" th:action="@{/logout}" class="nav-link align-middle px-0">
+                                    <form method="post" th:action="@{/logout}">
+                                    <a href="" onclick="this.parentNode.submit();" class="nav-link align-middle px-0" >
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         <span class="ms-2 d-none d-sm-inline">Salir</span>
                                     </a>
+                                    </form>
                                 </li>
                             </ul>
                             <hr>
-                            <div class="dropdown pb-4">
+                            <div sec:authorize="isAuthenticated()" class="dropdown pb-4">
                                 <a href="#"
                                    class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
                                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img th:src="@{/img/empresa.png}" width="40" height="40" class="rounded-circle">
                                     <span class="d-none d-sm-inline mx-1">Bienvenido</span>
-                                    <span>usuario</span>
+                                    <span sec:authentication="name"></span>
                                 </a>
                             </div>
                         </div>
@@ -82,8 +87,6 @@
                 </div>
         </div>
     </div>
-
-
 </header>
 
 <section th:fragment="mainEmpresas" id="main-empresas" class="py-0 bg-white text-black">

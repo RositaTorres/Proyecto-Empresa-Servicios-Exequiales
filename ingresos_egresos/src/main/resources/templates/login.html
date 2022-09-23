@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="shortcut icon" th:href="@{/img/faviconempresa.png}">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
+<!--    <link rel="stylesheet" th:href="@{/css/css-footer.css}">-->
 
 </head>
 <body>
@@ -21,13 +22,14 @@
                 <img th:src="@{/img/negocio.png}">
             </div>
             <h5 class="">Ingreso al Sistema</h5><br>
-            <form action="" method="" class="col-12">
-                <div class="form-group" id="user-group">
-                    <input type="hidden" name="action" value="verificarlogin">
-                    <input type="email" class="form-control" name="idUsuario" placeholder="Correo"><br>
+            <form th:action="@{/login}" method="post" class="col-12">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" class="form-control" name="username" id="username"><br>
                 </div>
-                <div class="form-group" id="contrasena-group">
-                    <input type="password" class="form-control" name="clave" placeholder="Password"><br>
+                <div class="form-group">
+                    <label for="password">Clave</label>
+                    <input type="password" class="form-control" name="password" id="Password"><br>
                 </div>
                 <button type="submit" class="btn btn-outline-success" id="lateral1"> Ingresar</button>
             </form>
@@ -36,7 +38,7 @@
         </div>
     </div>
 </div>
-
+<footer th:replace="layout/plantilla :: footer"></footer>
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>

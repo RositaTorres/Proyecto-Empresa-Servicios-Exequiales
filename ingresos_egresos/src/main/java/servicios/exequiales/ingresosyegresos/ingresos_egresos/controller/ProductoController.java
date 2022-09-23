@@ -52,7 +52,7 @@ public class ProductoController {
         for(ObjectError e : error.getAllErrors())
             System.out.println(e.toString());
         if(error.hasErrors()) {
-            return "empresas/modificar";
+            return "productos/modificar";
         }
         producto.setEstadoProducto(true);
         producto = productoService.creatProducto(producto);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaft.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Empresas</title>
@@ -19,8 +19,9 @@
                 <div class="p-4 border bg-light">
 
                     <div class="px-6 py-5 my-5  d-flex flex-column align-items-center">
-                        <h2 class= "text-center">Nueva Empresa</h2>
-                        <form class="d-flex flex-column gap-1 align-items-center" th:action="@{/empresas/guardar}" method="post"
+                        <h2 class="text-center">Nueva Empresa</h2>
+                        <form class="d-flex flex-column gap-1 align-items-center" th:action="@{/empresas/guardar}"
+                              method="post"
                               th:object="${empresa}">
                             <div class="form-group col-md-12">
                                 <input type="hidden" name="idEmpresa" th:field="*{idEmpresa}">
@@ -38,21 +39,26 @@
                             <div class="col-md-12">
                                 <label class="form-label" for="direccion">Direccion </label>
                                 <input class="form-control" type="text" name="direccion" th:field="*{direccion}"/>
-                                <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Direccion</span>
+                                <span th:if="${#fields.hasErrors('direccion')}"
+                                      th:errors="*{direccion}">Error Direccion</span>
                             </div>
                             <br>
                             <div class="col-md-12">
                                 <label class="form-label" for="telefono">Telefono o Celular</label>
                                 <input class="form-control" type="text" name="telefono" th:field="*{telefono}"/>
-                                <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
+                                <span th:if="${#fields.hasErrors('telefono')}"
+                                      th:errors="*{telefono}">Error telefono</span>
                             </div>
                             <br>
-                            <input type="submit" name="guardar" value="Guardar">
-
+                            <div>
+                                <input type="submit" name="guardar" value="Guardar" class="btn btn-outline-secondary">
+                                <input th:href="@{/empresas/list}" type="submit" name="cancelar" value="Cancelar"
+                                       class="btn btn-outline-secondary">
+                            </div>
                         </form>
                     </div>
                 </div>
-               </div>
+            </div>
         </div>
     </div>
 
