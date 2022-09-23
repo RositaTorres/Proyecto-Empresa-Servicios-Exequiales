@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">>
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
 <head>
   <meta charset="UTF-8">
-  <title>Eliminar Empleado</title>
+  <title>Empleados</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-<h1>Eliminar Empleado</h1>
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/plantilla :: mainEmpleados"></section>
 
+<h1>Eliminar Empleados</h1>
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

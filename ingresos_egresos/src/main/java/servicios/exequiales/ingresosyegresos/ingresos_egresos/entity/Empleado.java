@@ -2,10 +2,12 @@ package servicios.exequiales.ingresosyegresos.ingresos_egresos.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "empleados")
-public class Empleado {
+public class Empleado implements Serializable{
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +18,13 @@ public class Empleado {
     @Column(name = "documento", unique = true)
     private String documento;
     @javax.validation.constraints.NotEmpty
-    @Column(name = "nombre",nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-    @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?" ,message = "Debe ser un correo electrónico válido")
+
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "apellido", nullable = false)
+    private String apellido;
+    @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?", message = "Debe ser un correo electrónico válido")
     @Column(name = "correo", nullable = false)
     private String correo;
     @javax.validation.constraints.NotEmpty
@@ -35,13 +41,16 @@ public class Empleado {
     @Column(name = "area_empleado")
     private AreaEmpleado areaEmpleado;
 
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$" , message = "La contraseña debe contener minimo 8 caracteres, máximo 15, una letra mayúscula, una letra minuscula, un número, un caracter especial y sin espacios en blanco")
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "username", unique = true)
+    private String username;
+
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$", message = "La contraseña debe contener minimo 8 caracteres, máximo 15, una letra mayúscula, una letra minuscula, un número, un caracter especial y sin espacios en blanco")
     @Column(name = "clave", nullable = false)
     private String clave;
 
     @Column(name = "estado")
     private boolean estado;
-
 
     public long getIdEmpleado() {
         return idEmpleado;
@@ -65,6 +74,14 @@ public class Empleado {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreo() {
@@ -99,20 +116,20 @@ public class Empleado {
         this.rol = rol;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
     public AreaEmpleado getAreaEmpleado() {
         return areaEmpleado;
     }
 
     public void setAreaEmpleado(AreaEmpleado areaEmpleado) {
         this.areaEmpleado = areaEmpleado;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getClave() {
@@ -122,19 +139,32 @@ public class Empleado {
     public void setClave(String clave) {
         this.clave = clave;
     }
-      @Override
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    @Override
     public String toString() {
         return "Empleado{" +
                 "idEmpleado=" + idEmpleado +
                 ", documento='" + documento + '\'' +
                 ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
                 ", correo='" + correo + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", rol=" + rol +
                 ", areaEmpleado=" + areaEmpleado +
+                ", username='" + username + '\'' +
                 ", clave='" + clave + '\'' +
                 ", estado=" + estado +
                 '}';
     }
 }
+
+
