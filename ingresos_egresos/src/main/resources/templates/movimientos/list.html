@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaft.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Lista de movimientos</title>
@@ -10,7 +10,7 @@
 <br>
 <a th:href="@{/movimientos/modificar}">Nuevo Movimiento</a>
 <br>
-<table border="1">
+<table sec:authorize="isAuthenticated()" border="1">
     <tr>
         <th>Fecha</th>
         <th>Empresa

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Plantilla</title>
@@ -24,7 +21,7 @@
                             <br>
                             <hr>
 
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                            <ul sec:authorize="isAuthenticated()" class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                 id="menu">
                                 <li class="nav-item">
                                     <a th:href="@{/}" class="nav-link active align-middle px-12" aria-current="page">
@@ -57,7 +54,7 @@
                                 </li>
                                 <li>
                                     <form method="post" th:action="@{/logout}">
-                                    <a href="" onclick="this.parentNode.submit();" class="nav-link align-middle px-0" >
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link align-middle px-0" >
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         <span class="ms-2 d-none d-sm-inline">Salir</span>
                                     </a>
