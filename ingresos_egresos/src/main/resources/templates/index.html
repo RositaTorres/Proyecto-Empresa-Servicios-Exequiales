@@ -1,46 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
 
     <title>Sistema de Gestión de Ingresos y Gastos</title>
+    <link rel="shortcut icon" th:href="@{/img/faviconempresa.png}">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
-
-
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
+<!--HEADER-->
 <header class="container" th:replace="layout/plantilla :: header"></header>
-<h4>Menu</h4>
-<p th:text="${mensaje}"> lista </p>
-    <nav class="nav flex-column">
-        <a class="navbar-brand" href="#">
-            <img th:href="@{/templates/static/img/negocio.jpeg}" alt="" width="30" height="24">
-        </a>
-        <a class="nav-link active" aria-current="page" href="#">Ingresos y Egresos</a>
-        <a class="nav-link" href="#">Usuarios</a>
-        <a class="nav-link" href="#">Empresas</a>
-
-    </nav>
-</ul>
-<div class="container text-center">
-      <div class="row g-5">
-        <div class="col-2">
-            <div class="p-5 border bg-light"><a th:href="@{/empleados/list}">Sistema de Gestión de Usuarios</a></div>
+<!-MENU-CONTENIDO-->
+<div class="container">
+    <div class="row">
+        <!--MENU-->
+        <div class="container col-4">
+            <section th:replace="layout/plantilla :: menu"></section>
         </div>
-        <div class="col-2">
-            <div class="p-5 border bg-light"><a th:href="@{/empresas/list}">Sistema de Gestión de Empresas</a></div>
-        </div>
-        <div class="col-2">
-            <div class="p-5 border bg-light"><a th:href="@{/movimientos/list}">Sistema de Gestión de Movimientos</a>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="p-5 border bg-light"><a th:href="@{/productos/list}">Sistema de Gestión de Productos</a>
+        <!--CONTENIDO INDEX-->
+        <div class=" container col-8 justify-content-center align-self-center">
+            <!--<div class="card">-->
+            <div class="card-body">
+                <div class="p-4">
+                    <div class="d-flex flex-column align-items-center ps-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <div class="p-5 border text-center fs-5 bg-primary p-2 text-primary bg-opacity-25" ><a th:href="@{/empleados/list}">Sistema de Gestión de Usuarios</a></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <div class="p-5 border text-center fs-5 bg-primary p-2 text-primary bg-opacity-25"><a th:href="@{/empresas/list}">Sistema de Gestión de Empresas</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class=" col-md-6">
+                                <div class="p-5 border  text-center fs-5 bg-primary p-2 text-primary bg-opacity-25"><a th:href="@{/movimientos/list}">Sistema de Gestión de Movimientos</a></div>
+                            </div>
+                            <div class=" col-md-6">
+                                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <div class="p-5 border text-center fs-5 bg-primary p-2 text-primary bg-opacity-25"><a th:href="@{/productos/list}">Sistema de Gestión de Productos</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--</div>-->
             </div>
         </div>
     </div>
 </div>
+<!--FOOTER-->
 <footer th:replace="layout/plantilla :: footer"></footer>
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>

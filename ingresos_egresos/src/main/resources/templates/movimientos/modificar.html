@@ -1,50 +1,104 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaft.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Movimiento de Dinero</title>
+    <link rel="shortcut icon" th:href="@{/img/faviconempresa.png}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-
-<h1>Nuevo Movimiento de Dinero</h1>
-
-
-<form id="customer-form"  th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
-    <input type="hidden" name="idMovimientoDinero" th:field="*{idMovimientoDinero}">
-    <label for="fecha">Fecha</label>
-    <input type="date" name="fecha" th:field="*{fecha}"/>
-<!--    <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error fecha</span>-->
-    <br>
-    <label for="empresa">Empresa </label>
-     <select th:field="*{empresa.idEmpresa}" name="empresa">
-        <option value="0" selected>Seleccione empresa</option>
-        <option th:each="empresa: ${empresas}"
-                th:value="${empresa.idEmpresa}"
-                th:text="${empresa.nombreEmpresa}">
-        </option>
-    </select>
-
-<!--    <span th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Error empresa</span>-->
-    <br>
-    <label for="concepto">Concepto</label>
-    <input type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
-<!--    <span th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}">Error concepto</span>-->
-    <br>
-    <label for="producto">Producto </label>
-    <select th:field="*{producto.idProducto}" name="producto">
-        <option value="0" selected>Seleccione producto</option>
-        <option th:each="producto: ${productos}"
-                th:value="${producto.idProducto}"
-                th:text="${producto.nombreProducto}"
-        ></option>
-    </select>
-<!--    <span th:if="${#fields.hasErrors('productos')}" th:errors="*{productos}">Error producto</span>-->
-    <br>
-    <label for="monto">Monto</label>
-    <input type="number" name="monto" th:field="*{montoMovimiento}"/>
-<!--    <span th:if="${#fields.hasErrors('montoMovimiento')}" th:errors="*{montoMovimiento}">Error monto</span>-->
-    <br>
-    <input type="submit" name="guardar" value="Guardar">
-</form>
+<!--HEADER-->
+<header th:replace="layout/plantilla :: header"></header>
+<!--MAIN-->
+<section th:replace="layout/plantilla :: mainMovimientos"></section>
+<!--CONTENIDO-->
+<div class="container row">
+    <!--MENU-->
+    <div class="col-4">
+        <section th:replace="layout/plantilla :: menu"></section>
+    </div>
+    <!--CONTENIDO MOVIMIENTO-->
+    <div class="container row col-8">
+        <!--<div class="card">-->
+        <div class="card-body">
+            <div class="p-4 border bg-dark p-2 text-dark bg-opacity-25">
+                <div class="px-6 py-5 my-5  d-flex flex-column align-items-center">
+                    <h2 class="text-center">Nuevo Movimiento de Dinero</h2>
+                    <br>
+                    <form class="d-flex flex-column gap-2 align-items-center" id="customer-form"  th:action="@{/movimientos/guardar}"
+                          method="post"
+                          th:object="${movimiento}">
+                        <div class="form-group col-md-12 fs-5">
+                            <input type="hidden" name="idMovimientoDinero" th:field="*{idMovimientoDinero}">
+                            <label class="form-label" for="fecha">Fecha</label>
+                            <input class="form-control" type="date" name="fecha" th:field="*{fecha}"/>
+                            <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error fecha</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label"  for="empresa">Empresa </label>
+                            <select th:field="*{empresa.idEmpresa}" name="empresa">
+                                <option value="0" selected>Seleccione empresa</option>
+                                <option th:each="empresa: ${empresas}"
+                                        th:value="${empresa.idEmpresa}"
+                                        th:text="${empresa.nombreEmpresa}">
+                                </option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Error empresa</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label" for="concepto">Concepto</label>
+                            <input class="form-control" type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
+                            <span th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}">Error concepto</span>
+                            <br>
+                            <label for="producto">Producto </label>
+                            <select th:field="*{producto.idProducto}" name="producto">
+                                <option value="0" selected>Seleccione producto</option>
+                                <option th:each="producto: ${productos}"
+                                        th:value="${producto.idProducto}"
+                                        th:text="${producto.nombreProducto}"
+                                ></option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('producto')}"
+                                  th:errors="*{producto}">Error producto</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label" for="monto">Monto</label>
+                            <input class="form-control" type="number" name="monto" th:field="*{montoMovimiento}"/>
+                            <span th:if="${#fields.hasErrors('montoMovimiento')}"
+                                  th:errors="*{montoMovimiento}">Error monto</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label"  for="empleado">Empleado </label>
+                            <select th:field="*{empleado.idEmpleado}" name="empleado">
+                                <option value="0" selected>Seleccione empresa</option>
+                                <option th:each="empleado: ${empleados}"
+                                        th:value="${empleado.idEmpleado}"
+                                        th:text="${empleado.nombreEmpleado}">
+                                </option>
+                            </select>
+                        </div>
+                        <br>
+                        <div>
+                            <input type="submit" name="guardar" value="Guardar" class="btn btn-outline-dark">
+                            <input th:href="@{/movimientos/list}" type="submit" name="cancelar" value="Cancelar"
+                                   class="btn btn-outline-dark">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

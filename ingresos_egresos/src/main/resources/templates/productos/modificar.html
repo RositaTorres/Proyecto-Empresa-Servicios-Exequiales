@@ -1,19 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaft.org xmlns:sec=" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Productos</title>
+    <link rel="shortcut icon" th:href="@{/img/faviconempresa.png}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
+
 </head>
 <body>
-<h1>Datos de Productos</h1>
-<form th:action="@{/productos/guardar}" method="post" th:object="${productos}">
-    <input type="hidden" name="idProducto" th:field="*{idProducto}">
-    <label for="nombreProducto">Nombre </label>
-    <input type="text" name="nombre" th:field="*{nombreProducto}"/>
-    <span th:if="${#fields.hasErrors('nombreProducto')}" th:errors="*{nombreProducto}">Error Nombre del producto</span>
-    <br>
-    <input type="submit" name="guardar" value="Guardar">
-
-</form>
+<!--HEADER-->
+<header th:replace="layout/plantilla :: header"></header>
+<!--MAIN-->
+<section th:replace="layout/plantilla :: mainProductos"></section>
+<!--CONTENIDO-->
+<div class="container row">
+    <!--MENU-->
+    <div class="col-4">
+        <section th:replace="layout/plantilla :: menu"></section>
+    </div>
+    <!--CONTENIDO MOVIMIENTO-->
+    <div class="container row col-8">
+        <!--<div class="card">-->
+        <div class="card-body">
+            <div class="p-4 border bg-dark p-2 text-dark bg-opacity-25">
+                <div class="px-6 py-5 my-5  d-flex flex-column align-items-center">
+                <h2 class="text -center">Datos de Productos</h2>
+                <br>
+                <form class="d-flex flex-column gap-2 align-items-center" id="customer-form"   th:action="@{/productos/guardar}"
+                      method="post"
+                      th:object="${productos}">
+                    <div class="form-group col-md-12 fs-5">
+                        <input type="hidden" name="idProducto" th:field="*{idProducto}">
+                        <label class="form-label" for="nombreProducto">Nombre </label>
+                        <input class="form-control" type="text" name="nombre" th:field="*{nombreProducto}"/>
+                        <span th:if="${#fields.hasErrors('nombreProducto')}" th:errors="*{nombreProducto}">Error Nombre del producto</span>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit" name="guardar" value="Guardar" class="btn btn-outline-dark">
+                        <input th:href="@{/productos/list}" type="submit" name="cancelar" value="Cancelar"
+                               class="btn btn-outline-dark">
+                    </div>
+                </form>
+                </div>
+            </div>
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<!--FOOTER-->
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>
