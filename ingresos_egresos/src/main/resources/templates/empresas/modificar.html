@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaft.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Empresas</title>
@@ -9,58 +11,59 @@
     <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
+<!--HEADER-->
 <header th:replace="layout/plantilla :: header"></header>
+<!--MAIN-->
 <section th:replace="layout/plantilla :: mainEmpresas"></section>
-
-<section>
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <div class="p-4 border bg-light">
-                    <div class="px-6 py-5 my-5  d-flex flex-column align-items-center">
-                        <h2 class="text-center">Nueva Empresa</h2>
-                        <form class="d-flex flex-column gap-1 align-items-center" th:action="@{/empresas/guardar}"
-                              method="post"
-                              th:object="${empresa}">
-                            <div class="form-group col-md-12">
-                                <input type="hidden" name="idEmpresa" th:field="*{idEmpresa}">
-                                <label class="col-sm-2 col-form-label" for="nit">Nit </label>
-                                <input class="form-control" type="text" name="nit" th:field="*{nit}"/>
-                                <span th:if="${#fields.hasErrors('nit')}" th:errors="*{nit}">Error Nit</span>
-                            </div>
-                            <br>
-                            <div class="col-md-12">
-                                <label class="form-label" for="nombreEmpresa">Nombre Empresa </label>
-                                <input class="form-control" type="text" name="nombre" th:field="*{nombreEmpresa}"/>
-                                <span th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}">Error Nombre</span>
-                            </div>
-                            <br>
-                            <div class="col-md-12">
-                                <label class="form-label" for="direccion">Direccion </label>
-                                <input class="form-control" type="text" name="direccion" th:field="*{direccion}"/>
-                                <span th:if="${#fields.hasErrors('direccion')}"
-                                      th:errors="*{direccion}">Error Direccion</span>
-                            </div>
-                            <br>
-                            <div class="col-md-12">
-                                <label class="form-label" for="telefono">Telefono o Celular</label>
-                                <input class="form-control" type="text" name="telefono" th:field="*{telefono}"/>
-                                <span th:if="${#fields.hasErrors('telefono')}"
-                                      th:errors="*{telefono}">Error telefono</span>
-                            </div>
-                            <br>
-                            <div>
-                                <input type="submit" name="guardar" value="Guardar" class="btn btn-outline-secondary">
-                                <input th:href="@{/empresas/list}" type="submit" name="cancelar" value="Cancelar"
-                                       class="btn btn-outline-secondary">
-                            </div>
-                        </form>
-                    </div>
+<!--CONTENIDO-->
+<div class="container row">
+    <!--MENU-->
+    <div class="col-4">
+        <section th:replace="layout/plantilla :: menu"></section>
+    </div>
+    <!--CONTENIDO EMPRESA-->
+    <div class="container row col-8">
+        <!--<div class="card">-->
+        <div class="card-body">
+            <div class="border bg-dark p-2 text-dark bg-opacity-25 ">
+                <div class="px-6 py-5 my-5  d-flex flex-column align-items-center">
+                    <h2 class="text center">Datos de empresa</h2>
+                    <br>
+                    <form class="d-flex flex-column gap-2 align-items-center" id="customer-form" th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
+                        <div class="col-md-12 fs-5">
+                            <input type="hidden" name="idEmpresa" th:field="*{idEmpresa}">
+                            <label class="form-label" for="nit">Nit </label>
+                            <input class="form-label" type="text" name="nit" th:field="*{nit}"/>
+                            <span th:if="${#fields.hasErrors('nit')}" th:errors="*{nit}">Error Nit</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label" for="nombreEmpresa">Nombre Empresa </label>
+                            <input  class="form-control" type="text" name="nombre" th:field="*{nombreEmpresa}"/>
+                            <span th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}">Error Nombre</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label" for="direccion">Direccion </label>
+                            <input class="form-control" type="text" name="direccion" th:field="*{direccion}"/>
+                            <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Direccion</span>
+                        </div>
+                        <br>
+                        <div class="col-md-12 fs-5">
+                            <label class="form-label" for="telefono">Telefono o Celular</label>
+                            <input class="form-control" type="text" name="telefono" th:field="*{telefono}"/>
+                            <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
+                        </div>
+                        <br>
+                        <input type="submit" name="guardar" value="Guardar">
+                    </form>
                 </div>
             </div>
+            <!--div>-->
         </div>
     </div>
-</section>
+</div>
+<!--FOOTER-->
 <footer th:replace="layout/plantilla :: footer"></footer>
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>

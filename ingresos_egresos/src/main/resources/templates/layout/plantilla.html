@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Plantilla</title>
@@ -10,112 +9,135 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
     <link rel="stylesheet" th:href="@{/css/css-footer.css}">
-
-
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/scss/bootstrap.min.css}">
 </head>
 <body>
-<header th:fragment="header">
-    <div class="container-fluid">
-        <div class="row">
-                <div class="row flex-nowrap">
-                    <div class="col-auto col-md-4 col-xl-2 px-sm-2 px-0 bg-light" style="width 400px">
-                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                            <img th:src="@{/img/negocio.png}"  width="80" height="80"></img>
+<!-- LOGO - HEADER - BIENVENIDO  -->
+<<header th:fragment="header">
+    <nav class="navbar navbar-expand-sm navbar-dark p-2">
+        <div class="container-fluid bg-primary p-2 text-dark bg-opacity-25">
+            <div class="d-flex align-content-around ">
+                <img th:src="@{/img/negocio.png}" class="border border-secondary border-3 rounded-circle" width="100" height="auto" ></img>
+                <h1 class="ms-4"><br>Sistema de Gestión de Ingresos y Gastos <br></h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="  navbar-toogler-icon"></span>
+                </button>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="dropdown pb-4">
+                <a href="#"
+                   class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
+                   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img th:src="@{/img/empresa.png}" width="40" height="40" class="rounded-circle">
+                    <span class="d-none d-sm-inline mx-1 fw-bold">Bienvenido</span>
+                    <span sec:authentication="name"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--MENU -->
+<div class="container justify-content-center align-self-center"  style="background-color:#ADD8E6">
+    <div class="row">
+        <section th:fragment="menu">
+            <div class="container col-10 text-center" >
+                <div class="row d-flex justify-content-center align-self-center">
+                    <div class="row flex-nowrap">
+                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white-50 min-vh-100">
                             <br>
                             <hr>
-
+                            <hr>
                             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                 id="menu">
-                                <li class="nav-item">
-                                    <a th:href="@{/}" class="nav-link active align-middle px-12" aria-current="page">
+                                <li class="nav-item ">
+                                    <a th:href="@{/}" class="nav-link active align-middle px-12  bg-primary p-2 text-dark bg-opacity-25 fs-5" aria-current="page">
                                         <i class="fa-solid fa-house"></i>
                                         <span class="ms-2 d-none d-sm-inline">Inicio</span>
                                     </a>
                                 </li>
+                                <hr>
                                 <li>
-                                    <a th:href="@{/movimientos/list}" class="nav-link align-middle px-0">
+                                    <a th:href="@{/movimientos/list}" class="nav-link align-middle px-0 text-dark fs-5">
                                         <i class="fa-solid fa-money-bill"></i>
-                                        <span class="ms-2 d-none d-sm-inline">Ingresos y Egresos</span>
+                                        <span class="ms-2 d-none d-sm-inline ">Movimientos</span>
                                     </a>
                                 </li>
+                                <hr>
                                 <li>
-                                    <a th:href="@{/empleados/list}" class="nav-link align-middle px-0">
+                                    <a th:href="@{/empleados/list}" class="nav-link align-middle px-0 text-dark fs-5">
                                         <i class="fa-solid fa-user"></i>
                                         <span class="ms-2 d-none d-sm-inline">Usuarios</span></a>
                                 </li>
+                                <hr>
                                 <li>
-                                    <a th:href="@{/empresas/list}" class="nav-link align-middle px-0">
+                                    <a th:href="@{/empresas/list}" class="nav-link align-middle px-0 text-dark fs-5">
                                         <i class="fa-regular fa-building"></i>
                                         <span class="ms-2 d-none d-sm-inline">Empresas</span>
                                     </a>
                                 </li>
+                                <hr>
                                 <li>
-                                    <a th:href="@{/productos/list}" class="nav-link align-middle px-0">
+                                    <a th:href="@{/productos/list}" class="nav-link align-middle px-0 text-dark fs-5">
                                         <i class="fa-solid fa-store"></i>
                                         <span class="ms-2 d-none d-sm-inline">Productos</span>
                                     </a>
                                 </li>
+                                <hr>
                                 <li>
                                     <form method="post" th:action="@{/logout}">
-                                    <a href="" onclick="this.parentNode.submit();" class="nav-link align-middle px-0" >
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-                                        <span class="ms-2 d-none d-sm-inline">Salir</span>
-                                    </a>
+                                        <a href="" onclick="this.parentNode.submit();" class="nav-link align-middle px-0 text-dark fs-5" >
+                                            <i class="fa-solid fa-right-from-bracket"></i>
+                                            <span class="ms-2 d-none d-sm-inline">Salir</span>
+                                        </a>
                                     </form>
                                 </li>
                             </ul>
                             <hr>
-                            <div sec:authorize="isAuthenticated()" class="dropdown pb-4">
-                                <a href="#"
-                                   class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
-                                   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img th:src="@{/img/empresa.png}" width="40" height="40" class="rounded-circle">
-                                    <span class="d-none d-sm-inline mx-1">Bienvenido</span>
-                                    <span sec:authentication="name"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--            <div class="b-example-divider b-example-vr"></div>-->
 
-                    <!-- Contenido de la pagina -->
-                    <div class="col py-3">
-                        <div class="container text-center p-4 ">
-                            <h2>Sistema de Gestión de Ingresos y Gastos</h2>
                         </div>
+                        <!--            <div class="b-example-divider b-example-vr"></div>-->
                     </div>
                 </div>
-        </div>
+            </div>
+        </section>
     </div>
-</header>
-<section th:fragment="mainEmpleados" id="main-empleados" class="py-0 bg-white text-black">
-    <div class="container">
+</div>
+<!--MAIN--><!-- CONTENIDO -->
+<section th:fragment="mainEmpleados" id="main-empleados" class="bg-dark p-2 text-dark bg-opacity-25">
+    <div class="container d-flex col-md-1 offset-md-1">
         <div class="row">
-            <h1 class="col-md-6"><u>Empleados</u></h1>
-        </div>
-    </div>
-</section>
+            <h2>Empleados</h2>
 
-<section th:fragment="mainEmpresas" id="main-empresas" class="py-0 bg-white text-black">
-    <div class="container">
-        <div class="row">
-            <h1 class="col-md-6"><u>Empresas</u></h1>
         </div>
     </div>
 </section>
-<section th:fragment="mainProductos" id="main-productos" class="py-0 bg-white text-black">
-    <div class="container">
+<section th:fragment="mainEmpresas" id="main-empresas" class="bg-dark p-2 text-dark bg-opacity-25">
+    <div class="container d-flex col-md-1 offset-md-1">
         <div class="row">
-            <h1 class="col-md-6"><u>Productos</u></h1>
+            <h2>Empresas</h2>
         </div>
     </div>
 </section>
-
+<section th:fragment="mainProductos" id="main-productos" class="bg-dark p-2 text-dark bg-opacity-25">
+    <div class="container d-flex col-md-1 offset-md-1">
+        <div class="row">
+            <h2>Productos</h2>
+        </div>
+    </div>
+</section>
+<section th:fragment="mainMovimientos" id="main-movimientos" class="bg-dark text-dark bg-opacity-25">
+    <div class="container d-flex col-md-1 offset-md-1">
+        <div class="row">
+            <h2>Movimientos</h2>
+        </div>
+    </div>
+</section>
+</body>
+<!--FOOTER-->
 <footer th:fragment="footer" class="bg-light p-3 mt-3 footer-down">
-    <div class="container">
+    <div class="container bg-primary p-2 text-dark bg-opacity-25">
         <div class="col">
-            <p class="lead text-center">
-            <span>Derechos reservados @copy; <img th:src="@{/img/empresa.png}" width="40" height="40"   ></span>
+            <p class="lead text-center fs-5 fw-bold">
+                <span>Derechos reservados @copy; <img th:src="@{/img/empresa.png}" width="50" height="50"   ></span>
             </p>
         </div>
     </div>

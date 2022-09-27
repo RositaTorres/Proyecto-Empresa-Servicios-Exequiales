@@ -1,36 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaft.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Lista de movimientos</title>
+    <link rel="shortcut icon" th:href="@{/img/faviconempresa.png}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-<h1>Lista de movimientos</h1>
-<a th:href="@{/}">Home</a>
+<!--HEADER-->
+<header th:replace="layout/plantilla :: header"></header>
+<!--MAIN-->
+<section th:replace="layout/plantilla :: mainMovimientos"></section>
+<!--CONTENIDO-->
 <br>
-<a th:href="@{/movimientos/modificar}">Nuevo Movimiento</a>
-<br>
-<table border="1">
-    <tr>
-        <th>Fecha</th>
-        <th>Empresa
-        <th>Concepto</th>
-        <th>Producto</th>
-        <th>Monto</th>
-        <th>Empleado</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
-    </tr>
-    <tr th:each="movimiento: ${movimientos}">
-        <td th:text="${#dates.format(movimiento.fecha, 'dd-MMM-yyyy')}"></td>
-        <td th:text="${movimiento.empresa.nombreEmpresa}"></td>
-        <td th:text="${movimiento.conceptoMovimiento}"></td>
-        <td th:text="${movimiento.producto.nombreProducto}"></td>
-        <td th:text="${#numbers.formatDecimal(movimiento.montoMovimiento, 0, 'POINT', 0, 'COMMA')}"></td>
-        <td th:text="${movimiento.empleado}"></td>
-        <td><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" th:text="Editar"></a></td>
-        <td><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" th:text="Eliminar"></a></td>
-    </tr>
-</table>
+<div class="container ">
+    <div class="row">
+        <!--MENU-->
+        <div class="container col-4">
+            <section th:replace="layout/plantilla :: menu"></section>
+        </div>
+        <!--CONTENIDO lISTA MOVIMIENTO-->
+        <div class=" container col-8">
+            <h2>Lista de movimientos</h2>
+            <br>
+            <section sec:authorize="hasRole('ROLE_ADMIN')" class="py-4 m-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a th:href="@{/movimientos/modificar}">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+                                    <button class="btn btn-outline-secondary" type="button">Nuevo Movimiento</button>
+                                </div>
+                            </a><br>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="container row g-6 mx-auto bg-light">
+                    <div class="card">
+                        <div class="card-body">
+                            <div th:if="${movimientos != null and !movimientos.empty}">
+                                <table class="table table-striped table-hover ">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">No.</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Empresa
+                                        <th scope="col">Concepto</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Monto</th>
+                                        <th scope="col">Empleado</th>
+                                        <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Editar</th>
+                                        <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col" >Eliminar</th>
+                                    </tr>
+                                    <tbody>
+                                    <tr th:each="movimiento, contador: ${movimientos}" class="table-secondary">
+                                        <td th:text="${contador.count}"></td>
+                                        <td th:text="${#dates.format(movimiento.fecha, 'dd-MMM-yyyy')}"></td>
+                                        <td th:text="${movimiento.empresa.nombreEmpresa}"></td>
+                                        <td th:text="${movimiento.conceptoMovimiento}"></td>
+                                        <td th:text="${movimiento.producto.nombreProducto}"></td>
+                                        <td th:text="${#numbers.formatDecimal(movimiento.montoMovimiento, 0, 'POINT', 0, 'COMMA')}"></td>
+                                        <td th:text="${movimiento.empleado}"></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}"><i
+                                                class="fa-regular fa-pen-to-square"></i></a></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}"><i
+                                                class="fa-solid fa-trash-can"></i></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:if="${movimientos == null or movimientos.empty}">
+                                <span>No hay elementos en las lista</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!--FOOTER-->
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>
