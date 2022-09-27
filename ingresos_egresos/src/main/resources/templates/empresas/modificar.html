@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaft.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Empresas</title>
@@ -27,36 +27,36 @@
         <div class="card-body">
             <div class="border bg-dark p-2 text-dark bg-opacity-25 ">
                 <div class="px-6 py-5 my-5  d-flex flex-column align-items-center">
-                    <h2 class="text center">Datos de empresa</h2>
+                <h2 class="text center">Datos de empresa</h2>
+                <br>
+                <form class="d-flex flex-column gap-2 align-items-center" id="customer-form" th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
+                    <div class="col-md-12 fs-5">
+                        <input type="hidden" name="idEmpresa" th:field="*{idEmpresa}">
+                        <label class="form-label" for="nit">Nit </label>
+                        <input class="form-label" type="text" name="nit" th:field="*{nit}"/>
+                        <span th:if="${#fields.hasErrors('nit')}" th:errors="*{nit}">Error Nit</span>
+                    </div>
                     <br>
-                    <form class="d-flex flex-column gap-2 align-items-center" id="customer-form" th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
-                        <div class="col-md-12 fs-5">
-                            <input type="hidden" name="idEmpresa" th:field="*{idEmpresa}">
-                            <label class="form-label" for="nit">Nit </label>
-                            <input class="form-label" type="text" name="nit" th:field="*{nit}"/>
-                            <span th:if="${#fields.hasErrors('nit')}" th:errors="*{nit}">Error Nit</span>
-                        </div>
-                        <br>
-                        <div class="col-md-12 fs-5">
-                            <label class="form-label" for="nombreEmpresa">Nombre Empresa </label>
-                            <input  class="form-control" type="text" name="nombre" th:field="*{nombreEmpresa}"/>
-                            <span th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}">Error Nombre</span>
-                        </div>
-                        <br>
-                        <div class="col-md-12 fs-5">
-                            <label class="form-label" for="direccion">Direccion </label>
-                            <input class="form-control" type="text" name="direccion" th:field="*{direccion}"/>
-                            <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Direccion</span>
-                        </div>
-                        <br>
-                        <div class="col-md-12 fs-5">
-                            <label class="form-label" for="telefono">Telefono o Celular</label>
-                            <input class="form-control" type="text" name="telefono" th:field="*{telefono}"/>
-                            <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
-                        </div>
-                        <br>
-                        <input type="submit" name="guardar" value="Guardar">
-                    </form>
+                    <div class="col-md-12 fs-5">
+                        <label class="form-label" for="nombreEmpresa">Nombre Empresa </label>
+                        <input  class="form-control" type="text" name="nombre" th:field="*{nombreEmpresa}"/>
+                        <span th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}">Error Nombre</span>
+                    </div>
+                    <br>
+                    <div class="col-md-12 fs-5">
+                        <label class="form-label" for="direccion">Direccion </label>
+                        <input class="form-control" type="text" name="direccion" th:field="*{direccion}"/>
+                        <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Direccion</span>
+                    </div>
+                    <br>
+                    <div class="col-md-12 fs-5">
+                        <label class="form-label" for="telefono">Telefono o Celular</label>
+                        <input class="form-control" type="text" name="telefono" th:field="*{telefono}"/>
+                        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error telefono</span>
+                    </div>
+                    <br>
+                    <input type="submit" name="guardar" value="Guardar">
+                </form>
                 </div>
             </div>
             <!--div>-->
