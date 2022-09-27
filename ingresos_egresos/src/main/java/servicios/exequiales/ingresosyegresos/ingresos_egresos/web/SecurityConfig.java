@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @Configuration
 @EnableWebSecurity
@@ -19,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -28,22 +27,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         build.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    //    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//       auth.inMemoryAuthentication()
+//               .withUser("admin")
+//               .password("{noop}123")
+//               .roles("ADMIN")
+//               .and()
+//               .withUser("user")
+//               .password("{noop}123")
+//               .roles("USER");
+//    }
     @Override // permiso de quien puede operar sobre las rutas
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","/empleados/list","/empleados/modificar", "/empleados/guardar","/empleados/editar/**", "/empleados/eliminar/**}",
-                        "/empresas/list","/empresas/crear","empresas/modificar", "/empresas/guardar", "/empresas/editar/**", "/empresas/eliminar/{id}",
-                        "/movimientos/list", "/movimientos/modificar", "/movimientos/guardar", "/movimientos/editar/**", "/movimientos/eliminar/**",
-                        "/productos/list","/productos/crear","/productos/guardar","productos/modificar", "/productos/editar/**","/productos/eliminar/**" )
+                .antMatchers("/", "/empleados/list/", "/empleados/modificar/", "/empleados/guardar/", "/empleados/editar/**", "/empleados/eliminar/**}",
+                        "/empresas/list/", "/empresas/crear/", "empresas/modificar/", "/empresas/guardar/", "/empresas/editar/**", "/empresas/eliminar/**",
+                        "/movimientos/list/", "/movimientos/modificar/", "/movimientos/guardar/", "/movimientos/editar/**", "/movimientos/eliminar/**",
+                        "/productos/list/", "/productos/crear/", "/productos/guardar/", "productos/modificar/", "/productos/editar/**", "/productos/eliminar/**")
                 .hasRole("ADMIN")
-                .antMatchers("/","/movimientos/list")
-                .hasAnyRole("ADMIN","USER")
+                .antMatchers("/", "/movimientos/list/")
+                .hasRole("USER")
                 .and()
                 .formLogin()//login por defecto de spring boot
                 .loginPage("/login") //ruta de mi template
                 .and()
-                .exceptionHandling().accessDeniedPage("/errores/403") //no tiene permiso errores
-                ;
+                .exceptionHandling().accessDeniedPage("/errores/403"); //error que arroja por permisos
 
     }
 }

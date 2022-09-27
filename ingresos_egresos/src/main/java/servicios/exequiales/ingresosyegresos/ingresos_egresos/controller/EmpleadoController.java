@@ -58,7 +58,7 @@ public class EmpleadoController  extends EncriptarPassword {
         return "empleados/modificar";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/empleados/guardar")
     public String guardarEmpleado(@Valid Empleado empleado, BindingResult error, Model modelo){
         LOG.log(Level.INFO,"guardarEmpleado");
         if(empleado.getRol().getIdRol() == 0) {
@@ -82,9 +82,9 @@ public class EmpleadoController  extends EncriptarPassword {
     @RequestMapping(value = "/empleados/editar/{id}", method = RequestMethod.GET)
     public String editEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "editEmpleado");
-        System.out.println(id);
+        //System.out.println(id);
         Empleado empleado = empleadoService.findById(id);
-        System.out.println(empleado.toString());
+        //System.out.println(empleado.toString());
         modelo.addAttribute("empleado", empleado);
         //Roles
         List<Rol> roles = rolService.findAll();

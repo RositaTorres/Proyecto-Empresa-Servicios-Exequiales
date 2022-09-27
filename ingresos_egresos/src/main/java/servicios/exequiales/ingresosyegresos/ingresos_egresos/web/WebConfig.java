@@ -10,16 +10,15 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 
 @Configuration
-public class WebConfig  implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer{
 
     @Override
     public void addViewControllers(ViewControllerRegistry registro){
-        registro.addViewController("/").setViewName("index");
+        registro.addViewController("/").setViewName("/index");
         registro.addViewController("/login");
         registro.addViewController("/errores/403").setViewName("/errores/403");
 
     }
-
     // bean para que maneje la seguridad de las vistas
     @Bean
     public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver, SpringSecurityDialect sec) {
@@ -28,6 +27,5 @@ public class WebConfig  implements WebMvcConfigurer {
         templateEngine.addDialect(sec); // Enable use of "sec"
         return templateEngine;
     }
-
 
 }
